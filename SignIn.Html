@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Koh+Santepheap&display=swap"
+      rel="stylesheet"
+    />
+    <title>Inventory Metland</title>
+  </head>
+
+  <script>
+    var a;
+    function pass()
+    {
+      if (a==1)
+  {
+  document.getElementById('password').type='password';
+  document.getElementById('show-password').type='checkbox';
+  a=0;
+}
+else
+{
+  document.getElementById('password').type='text';
+  document.getElementById('show-password').type='checkbox';
+  a=1;
+}
+}
+  </script>
+  <body>
+    <section class="Banner">
+      <div class="container">
+        <h1>
+          Welcome Back
+          <hr style="color: white" />
+        </h1>
+        <p>Web Inventory Metland School</p>
+      </div>
+    </section>
+
+    <section class="form">
+      <div class="Login">
+        <h1>Login Account</h1>
+      </div>
+
+      <div class="row">
+        <label for="daftar">
+          <div class="container">
+            <input type="text" placeholder="Username" /><br />
+          </div>
+  
+          <div class="container2">
+            <input type="password" placeholder="Password" id="password"/><br />
+          </div>
+  
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="show-password"
+            onclick="pass()"
+          />Show Password <br />
+  
+          <input type="button" class="masuk" value="Login" />
+        </label>
+      </section>
+      </div>
+
+      <div class="singup-page">
+        
+        <p>No account?</p>
+        <a href="#">Sign up now!</a>
+      </div>
+      
+  </body>
+</html>
