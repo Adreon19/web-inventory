@@ -3,9 +3,10 @@
     margin: 0;
     font-family: "Koh Santepheap";
   }
-  .Body {
+  body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
   }
   
   .Banner {
