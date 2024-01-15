@@ -16,6 +16,7 @@
     height: 777px;
     flex-shrink: 0;
     background: #004b81;
+    min-height: 100vh;
   }
   
   .Banner h1 {
