@@ -1,143 +1,150 @@
 * {
-    padding: 0;
-    margin: 0;
-    font-family: "Koh Santepheap";
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .Banner {
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    width: 746px;
-    height: 777px;
-    flex-shrink: 0;
-    background: #004b81;
-    min-height: 100vh;
-  }
-  
-  .Banner h1 {
-    padding: 0% 158px;
-    padding-top: 45%;
-    position: relative;
-    display: flex;
-    width: 430px;
-    height: 89.75px;
-    flex-direction: column; /*untuk line putih*/
-    /* justify-content: center; */
-    flex-shrink: 0;
-    color: #fff;
-    text-align: center;
-    font-family: Koh Santepheap;
-    font-size: 46px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-  
-  .Banner p {
-    padding: 0% 40px;
-    position: relative;
-    flex-shrink: 0;
-    color: #000;
-    text-align: center;
-    font-family: Koh Santepheap;
-    font-size: 27px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 5px;
-  }
-  
-  .form {
-    padding-top: 10%;
-    float: inline-end;
-    width: 37%;
-  }
-  
-  .Login h1 {
-    width: 371px;
-    height: 79px;
-    flex-shrink: 0;
-    color: #000;
-    text-align: center;
-    font-family: Koh Santepheap;
-    font-size: 45px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-  
-  .container input {
-    padding-left: 2%;
-    margin: 3%;
-    width: 306px;
-    height: 25px;
-    /* line-height: ; */
-    flex-shrink: 0;
-    border-radius: 11px;
-    border: 1px solid #000;
-    background: #d9d9d9;
-  }
-  
-  .container2 input {
-    padding-left: 2%;
-    margin: 3%;
-    width: 306px;
-    height: 25px;
-    border-radius: 11px;
-    border: 1px solid #000;
-    background: #d9d9d9;
-  }
-  
-  .row {
-    margin: 3%;
-  }
-  
-  .form-check-input {
-    width: 252px;
-    height: 28px;
-    flex-shrink: 0;
-    color: #000;
-    font-family: Koh Santepheap;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border: 1px solid #000;
-    background: #d9d9d9;
-    width: 25px;
-    height: 25px;
-    flex-shrink: 0;
-    margin-top: 5px;
-    margin-left: 4%;
-    margin-right: 2%;
-    /* margin: 3%; */
-  }
-  
-  .masuk {
-    margin: 10%;
-    color: #fff;
-    text-align: center;
-    font-family: Koh Santepheap;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 166px;
-    height: 54px;
-    flex-shrink: 0;
-    border-radius: 11px;
-    background: #004b81;
-  }
-  
-  .singup-page {
-    position: absolute;
-    display: flex;
-    padding-top: 45%;
-    left: 70%;
-  }
-  
+  padding: 0;
+  margin: 0;
+  font-family: "Koh Santepheap";
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Banner {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  width: 746px;
+  height: 777px;
+  flex-shrink: 0;
+  background: #004b81;
+  min-height: 100vh;
+}
+
+.Banner h1 {
+  padding: 0% 158px;
+  padding-top: 45%;
+  position: relative;
+  display: flex;
+  width: 430px;
+  height: 89.75px;
+  flex-direction: column; /*untuk line putih*/
+  flex-shrink: 0;
+  color: #fff;
+  text-align: center;
+  font-family: Koh Santepheap;
+  font-size: 46px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Banner p {
+  padding: 0% 40px;
+  position: relative;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: Koh Santepheap;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 5px;
+}
+
+.form {
+  padding-top: 10%;
+  position: relative;
+  width: 37%;
+  left: 65%;
+}
+
+.Login h1 {
+  width: 371px;
+  height: 79px;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: Koh Santepheap;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.container input {
+  padding-left: 2%;
+  margin: 3%;
+  width: 306px;
+  height: 25px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  border: 1px solid #000;
+  background: #d9d9d9;
+}
+
+.container2 input {
+  padding-left: 2%;
+  margin: 3%;
+  width: 306px;
+  height: 25px;
+  border-radius: 11px;
+  border: 1px solid #000;
+  background: #d9d9d9;
+}
+
+.row {
+  margin: 3%;
+}
+
+.form-check-input {
+  width: 252px;
+  height: 28px;
+  flex-shrink: 0;
+  color: #000;
+  font-family: Koh Santepheap;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: 1px solid #000;
+  background: #d9d9d9;
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  margin-top: 5px;
+  margin-left: 4%;
+  margin-right: 2%;
+  /* margin: 3%; */
+}
+
+.masuk {
+  margin: 10%;
+  color: #fff;
+  text-align: center;
+  font-family: Koh Santepheap;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 166px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: #004b81;
+}
+
+.singup-page {
+  position: absolute;
+  display: flex;
+  padding-top: 45%;
+  left: 70%;
+}
+
+.singup-page a {
+  color: #000;
+  text-decoration: none;
+}
+
+.form-check-input:hover {
+  cursor: pointer;
+}
