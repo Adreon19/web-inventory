@@ -1,0 +1,62 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Koh Santepheap";
+}
+
+.navbar {
+  background: #004b81;
+}
+
+.navbar img {
+  margin: 6px;
+  padding: 0 20px;
+}
+
+.navbar a {
+  padding: 6px;
+  margin: 18px;
+  color: #fff;
+  text-align: center;
+  font-family: "Koh Santepheap";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+  float: inline-end;
+  width: 10%;
+}
+
+.daftar:hover {
+  color: #0e2230;
+}
+
+.masuk:hover {
+  color: white;
+  background-color: #24714e;
+  border: 3px solid #24714e;
+}
+
+.masuk {
+  border: 3px solid #35a372;
+  border-radius: 15px;
+  background-color: #35a372;
+}
+
+.elemen img {
+  position: absolute;
+  /* top: -20px; */
+  filter: blur(3px);
+  z-index: 0;
+  mix-blend-mode: luminosity;
+}
+
+.elemen h1 {
+  position: relative;
+  top: 150px;
+  color: #292929;
+  font-size: 45px;
+  justify-content: center;
+  text-align: center;
+}
