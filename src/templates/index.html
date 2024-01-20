@@ -1,0 +1,38 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Halaman Utama</title>
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section class="head">
+      <div class="navbar">
+        <img
+          src="{%static 'img/metland.png'%}"
+          alt="LogoMetland"
+          width="80px"
+        />
+        <a href="#" class="masuk">Login</a>
+        <a href="#" class="daftar">Sign Up</a>
+      </div>
+    </section>
+
+    <section class="banner">
+      <div class="elemen">
+        <img
+          src="{%static 'img/metlen.webp'%}"
+          alt=""
+          width="1536px"
+          height="442px"
+        />
+        <h1>Welcome To <br />Inventory Metland School</h1>
+      </div>
+
+      <section id="Kategori"></section>
+    </section>
+  </body>
+</html>
