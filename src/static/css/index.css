@@ -1,7 +1,11 @@
 * {
+    box-sizing: border-box;
+    font-family: "Koh Santepheap";
+  }
+
+  body {
     padding: 0;
     margin: 0;
-    font-family: "Koh Santepheap";
   }
   
   .navbar {
