@@ -18,7 +18,7 @@ def register(request):
         user = request.POST.get('username')
         mail = request.POST.get('email')
         passwd = request.POST.get('password')
-        confirm = request.POST.get('confirmPass')
+        confirm = request.POST.get('passconfirm')
 
         if User.objects.filter(username=user):
             messages.error(request, "username sudah teregistrasi!!")
