@@ -28,6 +28,7 @@
     </header>
 
     <form method="POST" class="form">
+      {% csrf_token %}
       <div class="Login">
         <h1>Login Account</h1>
       </div>
@@ -59,7 +60,7 @@
 
     <div class="singup-page">
       <p>No account?</p>
-      <a href="{%static 'html/register.html' %}"><b></b>Sign up now!</a>
+      <a href="/register"><b></b>Sign up now!</a>
     </div>
 
     <script src="{% static 'js/main.js' %}"></script>
