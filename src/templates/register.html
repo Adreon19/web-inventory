@@ -20,7 +20,7 @@
     <div id="container">
       <header class="Banner">
         <h1>Welcome</h1>
-        <hr style="color: white">
+        <hr style="color: white" />
         <p>Web Inventory Metland School</p>
       </header>
 
@@ -28,15 +28,46 @@
         {% csrf_token %}
         <h1 class="title-form">Register Account</h1>
 
-        <input type="text" name="user" placeholder="Username" class="textbox"/><br />
-        <input type="email" name="email" placeholder="Email" class="textbox"/><br />
-        <input type="password" name="password" placeholder="Password" class="textbox" id="password"/><br />
-        <input type="password" name="passconfirm" placeholder="Confirm Password" class="textbox" id="password"/><br />
-        <input type="checkbox" class="form-check-input" id="show-password" onclick="LoginPass()">
-        <label for="show">Show Password</label><br>
-        <input type="button" class="masuk" value="Create Account" /><br>
+        <input
+          type="text"
+          name="user"
+          placeholder="Username"
+          class="textbox"
+        /><br />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          class="textbox"
+        /><br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          class="textbox"
+          id="password"
+        /><br />
+        <input
+          type="password"
+          name="passconfirm"
+          placeholder="Confirm Password"
+          class="textbox"
+          id="confirm"
+        /><br />
 
-        <span style="text-align: center;">Already have account? <a href="/login">Sign In</a></span>
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="show-password"
+          onclick="RegisterPass()"
+        />
+
+        <label for="show">Show Password</label><br />
+        <input type="button" class="masuk" value="Create Account" /><br />
+
+        <span style="text-align: center" class="alt-Log"
+          >Already have account? <a href="/login"><b>Sign In</b></a></span
+        >
       </form>
     </div>
     <script src="{% static 'js/main.js' %}"></script>
