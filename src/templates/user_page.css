@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #004b81;
+  height: 80px;
+  padding: 10px;
+  display: flex;
+}
+
+.topnav img {
+  max-width: 100px;
+  height: auto;
+  padding-left: 25px;
+}
+.topnav h1 {
+  color: white;
+  font-family: "Koh Santepheap";
+  margin-left: 20px;
+  font-size: 30px;
+}
+
+.profile {
+  align-items: center;
+  text-align: center;
+}
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 30;
+  left: 0;
+  background-color: #d9d9d9;
+  overflow-x: hidden;
+  padding-top: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.sidenav a {
+  padding: 30px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #060606;
+  display: block;
+  font-family: "Koh Santepheap";
+  transition: background-color 0.3s ease;
+}
+
+.sidenav a:hover {
+  background-color: #004b81;
+  color: white;
+}
+
+.main {
+  margin-left: 225px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-right: 100px;
+}
+
+.prof-info {
+  display: flex;
+  gap: 15px;
+  padding-right: 700px;
+  flex-direction: column;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}

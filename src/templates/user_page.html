@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="user_page.css" />
+  </head>
+  <body>
+    <script
+      src="https://kit.fontawesome.com/fc882e8665.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <div class="topnav">
+      <img src="src/logo_metland.png" alt="" />
+      <h1>Inventory Metland School</h1>
+    </div>
+
+    <div class="sidenav">
+      <div class="profile">
+        <a href="#"><i class="fa-regular fa-circle-user fa-2xl"></i></a>
+        <h1 style="font-size: 20px ;">Nama</h1>
+      </div>
+      <a href="#"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="#"><i class="fa-solid fa-shapes"></i> Category</a>
+      <a href="#"><i class="fa-solid fa-list"></i> Order</a>
+      <a href="#"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+    </div>
+
+    <div class="main">
+      <h2>Profil Saya</h2>
+      <p>
+        Kelola profil anda untuk mengontrol, melindungi, dan mengamankan akun
+        anda.
+        <hr />
+        <div class="prof-info">
+            <label for="name">Nama Pertama (4 - 12 karakter)   :</label>
+            <input type="text" name="name" id="name" required minlength="4" maxlength="12" size="8">
+            <label for="name">Nama Terakhir (4 - 12 karakter)    :</label>
+            <input type="text" name="name" id="name" required minlength="4" maxlength="12" size="10">
+            <label for="email">Email  :</label>
+            <input type="email" name="email" id="email">
+            <label for="number">Nomor Telepon  :</label>
+            <input type="text" name="number" id="number">
+            <input type="button" value="Save">
+        </div>
+      </p>
+    </div>
+  </body>
+</html>
