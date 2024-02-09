@@ -1,0 +1,31 @@
+{%extends 'layout/base.html'%} {% load static %} {%block title %} Register
+{%endblock%} {%block css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}" /> {%endblock %}
+{% block contents %}
+<div id="container">
+  {%include 'components/header.html' with title="Welcome"%}
+  <form method="post" action="{% url 'src:register'%}">
+    {% csrf_token %}
+    <h1 class="title-form">Register Account</h1>
+    {% if form.errors %}
+      {% for _ , value in form.errors.items%}
+        <div class="err">{{value}}</div>
+      {% endfor %}
+    {%endif%}<br>
+    {{form.username}}<br>
+    {{form.email}}<br>
+    {{form.password1}}<br>
+    {{form.password2}}<br>
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="show-password"
+      onclick="RegisterPass()"
+    />
+    <label for="show">Show Password</label><br />
+    <input type="submit" class="masuk" value="Create Account" /><br />
+
+    <span>Already have account? <a href="{% url 'src:login' %}">Sign In</a></span>
+  </form>
+</div>
+{%endblock %}

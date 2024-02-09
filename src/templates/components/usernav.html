@@ -1,0 +1,17 @@
+<div class="topnav">
+  <img src="src/logo_metland.png" alt="" />
+  <h1>Inventory Metland School</h1>
+</div>
+
+<div class="sidenav">
+  <div class="profile">
+    <a href="{% url 'src:profile' %}"
+      ><i class="fa-regular fa-circle-user fa-2xl"></i
+    ></a>
+    <span style="font-size: 24px">{{user.get_username}}</span>
+  </div>
+  <a href="{% url 'src:home' %}"><i class="fa-solid fa-house"></i> Home</a>
+  <a href="#"><i class="fa-solid fa-shapes"></i> Category</a>
+  <a href="#"><i class="fa-solid fa-list"></i> Order</a>
+  <a href="#"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+</div>

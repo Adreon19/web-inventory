@@ -16,12 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-admin.site.site_header = "Admin Panel"
-admin.site.site_title = "Web Inventory"
-admin.site.index_title = "Items"
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include("src.urls"))
+    path('',include(("src.urls","src"),"src")) 
 ]
+
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

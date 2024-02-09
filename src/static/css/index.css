@@ -10,21 +10,19 @@ body {
 
 .navbar {
   background: #004b81;
-  /* position: fixed; */
 }
 
 .navbar img {
   margin: 6px;
   padding: 0 20px;
+  width: 100px;
 }
 
 .navbar a {
-  padding: 6px;
-  margin: 18px;
   color: #fff;
   text-align: center;
   font-family: "Koh Santepheap";
-  font-size: 30px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -50,18 +48,20 @@ body {
 }
 
 .elemen img {
-  position: absolute;
-  top: 105px;
+  position: relative;
   filter: blur(3px);
   z-index: 0;
   mix-blend-mode: luminosity;
+  height: 50%;
+  background-position: center;
+  background-size: cover;
 }
 
 .elemen h1 {
-  position: relative;
-  top: 150px;
+  position: absolute;
   color: #292929;
   font-size: 45px;
   justify-content: center;
   text-align: center;
+  top: 50%;
 }

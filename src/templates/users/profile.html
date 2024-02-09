@@ -1,0 +1,34 @@
+{%extends 'layout/base.html'%} {% load static %} {%block title %} Profile
+{%endblock %} {%block css %}
+<link rel="stylesheet" href="{% static 'css/user.css' %}" /> {% endblock %}
+{%block navbar %} {% include "components/usernav.html" %} {%endblock navbar%}
+{%block contents%}
+<main>
+  <h2>Profil Saya</h2>
+  <p>
+    Kelola profil anda untuk mengontrol, melindungi, dan mengamankan akun anda.
+  </p>
+  <hr />
+  <form method="POST" enctype="multipart/form-data" class="prof-info">
+    {%csrf_token%}
+    <label for="firstname">Firstname</label><br>
+    {{ editform.first_name }}<br>
+    <label for="lastname">Lastname</label><br>
+    {{ editform.last_name }} <br>
+    <label for="username">Change Username</label>
+    {{ editform.username }}<br>
+    <label for="email">Change Email</label><br>
+    {{ editform.email }} <br>
+    <input type="submit" value="Update" />
+  </form>
+  <h3>Password</h3>
+  <a href="{% url 'src:password_change'%}">Change Password</a><br>
+  <a href="{% url 'src:password_reset'%}">Reset Password</a>
+
+  <h3>Sign Out</h3>
+  <form action="{% url 'src:logout' %}" method="post" > 
+    {% csrf_token%}
+    <button type="submit">Log Out</button>
+  </form>
+</main>
+{%endblock contents%}

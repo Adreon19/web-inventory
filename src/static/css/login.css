@@ -11,10 +11,9 @@ body {
 
 .Banner {
   margin: 0;
-  flex-shrink: 0;
+  flex: 1 1 0;
   background: #004b81;
   min-height: 100vh;
-  width: 700px;
 }
 
 .Banner h1 {
@@ -32,9 +31,6 @@ body {
 }
 
 .Banner p {
-  padding: 0% 40px;
-  position: relative;
-  flex-shrink: 0;
   color: white;
   text-align: center;
   font-family: Koh Santepheap;
@@ -44,24 +40,18 @@ body {
 }
 
 .title-form {
-  width: 371px;
-  height: 79px;
   color: #000;
   font-size: 45px;
   font-weight: 400;
-  margin-top: 50%;
-}
-
-.alt-Log a {
-  text-decoration: none;
 }
 
 form {
-  margin: 0 auto;
+  margin: auto;
   text-align: center;
+  flex: 1 1 0;
 }
 
-.username-password {
+#id_username, #id_password {
   width: 306px;
   height: 40px;
   border-radius: 11px;
@@ -98,4 +88,5 @@ input {
 
 #container {
   display: flex;
+  flex-wrap: wrap;
 }

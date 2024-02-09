@@ -1,0 +1,10 @@
+{%load static %}
+<nav class="navbar">
+  <img src="{%static 'img/metland.png'%}" alt="LogoMetland" />
+  {% if user.is_authenticated %}
+    <a href="{% url 'src:home' %}">Home</a>
+  {% else %}
+    <a href="{% url 'src:login' %}" class="masuk">Login</a>
+    <a href="{% url 'src:register'%}" class="daftar">Sign Up</a>
+  {%endif%}
+</nav>

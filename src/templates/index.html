@@ -1,40 +1,10 @@
-{%load static%}
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Halaman Utama</title>
-
-    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-    <section class="head">
-      <div class="navbar">
-        <img
-          src="{%static 'img/metland.png'%}"
-          alt="LogoMetland"
-          width="120px"
-        />
-        <a href="/login" class="masuk">Login</a>
-        <a href="/register" class="daftar">Sign Up</a>
-      </div>
-    </section>
-
-    <section class="banner">
-      <div class="elemen">
-        <img
-          src="{%static 'img/metlen.webp'%}"
-          alt=""
-          width="1536px"
-          height="442px"
-        />
-        <h1>Welcome To Inventory Metland School</h1>
-      </div>
-
-      <section id="Kategori">
-        <div class="border-box"></div>
-      </section>
-    </section>
-  </body>
-</html>
+{%extends 'layout/base.html'%} {%load static%} {%block title%} Halaman Utama
+{%endblock %} {%block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" /> {% endblock %}
+{%block navbar%} {%include 'components/indexnav.html'%} {%endblock navbar%}
+{%block contents%}
+<div class="elemen">
+  <img src="{%static 'img/metlen.webp'%}" alt="image" />
+  <h1>Welcome To Inventory Metland School</h1>
+</div>
+{%endblock contents%}
