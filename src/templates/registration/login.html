@@ -1,0 +1,28 @@
+{% extends 'layout/base.html' %} {% load static %} {%block title %} Login
+{%endblock%} {%block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}" /> {% endblock %}
+{%block contents%}
+<div id="container">
+  {%include 'components/header.html' with title="Welcome Back"%}
+  <form method="POST" action="{% url 'src:login'%}">
+    {%csrf_token%}
+    <h1 class="title-form">Login Account</h1>
+    {% if form.errors %}
+      {% for _ , value in form.errors.items%}
+        <div class="err">{{value}}</div>
+      {% endfor %}
+    {%endif%}<br>
+    {{form.username}}<br>
+    {{form.password}}<br>
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="show-password"
+      onclick="LoginPass()"
+    />
+    <label for="show">Show Password</label><br />
+    <input type="submit" class="masuk" value="Login" /><br />
+    <span>No have account? <a href="{% url 'src:register' %}">Sign Up</a></span>
+  </form>
+</div>
+{%endblock contents%}

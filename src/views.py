@@ -1,41 +1,45 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib.auth.models import User
-from django.contrib import messages
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from .forms import RegistsForm, UpdateUserProfile
+from .models import Item
+
+from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
 
-def home(request):
+def index(request):
     return render(request, "index.html")
 
-def login(request):
-    if (request.method == "POST"): pass
-    return render(request, "login.html")
+@csrf_protect
+@login_required
+def home(request):
+    context = {"products":Item.objects.all()}
+    return render(request,"users/home.html",context)
 
 def register(request):
     if request.method == "POST": 
-        user = request.POST.get('username')
-        mail = request.POST.get('email')
-        passwd = request.POST.get('password')
-        confirm = request.POST.get('passconfirm')
+        forms = RegistsForm(request.POST or None)
+        if forms.is_valid():
+            forms.save()
+            return redirect("src:login")
+    else:
+        forms = RegistsForm()
 
-        if User.objects.filter(username=user):
-            messages.error(request, "username sudah teregistrasi!!")
+    return render(request, "registration/register.html",{"form":forms})
 
-        if User.objects.filter(email=mail):
-            messages.error(request, "email sudah teregistrasi!!")
+@login_required
+def profile(request):
+    if (request.method == "POST"):
+        userprof = UpdateUserProfile(request.POST , instance=request.user)
+        if userprof.is_valid():
+            userprof.save()
+            return redirect("src:home")
+    else:
+        userprof = UpdateUserProfile(instance=request.user)
+        
+    return render(request,"users/profile.html",{"editform":userprof})
 
-        if (confirm != passwd):
-            messages.error(request,"password tidak sama!!")
-
-        reguser = User.objects.create_user(user,mail,passwd)
-
-        reguser.username = user
-        reguser.save()
-
-        messages.success(request,"akun mu sudah teregistrasi!!")
-
-        return redirect("/login")
-
-    return render(request, "register.html")
+@login_required
+def order(request):
+    return render(request, "users/order.html")
