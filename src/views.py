@@ -43,3 +43,7 @@ def profile(request):
 @login_required
 def order(request):
     return render(request, "users/order.html")
+
+@login_required
+def history(request):
+    return render(request, "users/history.html")
