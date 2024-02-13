@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "core/index.html")
 
 @csrf_protect
 @login_required
@@ -34,7 +34,7 @@ def profile(request):
         userprof = UpdateUserProfile(request.POST , instance=request.user)
         if userprof.is_valid():
             userprof.save()
-            return redirect("src:home")
+            return redirect("src:profile")
     else:
         userprof = UpdateUserProfile(instance=request.user)
         
