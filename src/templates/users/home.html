@@ -8,12 +8,13 @@
 {%block contents%} 
 <main> 
     <h1>Barang yang tersedia</h1>
-    <div class="home-product">
+    <div class="product-row">
         {% for product in products %}
-            <div class="home-row">
-                <img src="{{ product.image.url }}" width="150px" height="150px">
-                {{ product.name }}
-                jumlah: {{ product.quantity }}
+            <div class="product-column">
+                <img src="{{ product.image.url }}" width="100px" height="100px">
+                <h1 class="product-name">{{ product.name }}</h1>
+                <p>jumlah: {{ product.quantity }}</p>
+                <button class="order">Pinjam</buttom>
             </div>
         {% endfor %}
     </div>

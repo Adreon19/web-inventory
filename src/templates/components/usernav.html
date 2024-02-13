@@ -1,6 +1,7 @@
-<div class="topnav">
-  <img src="src/logo_metland.png" alt="" />
-  <h1>Inventory Metland School</h1>
+{% load static%}
+<div class="header">
+  <img src="{% static 'img/metland.png'%}" alt="Logo" />
+  <h1 class="header-title">Inventory Metland School</h1>
 </div>
 
 <div class="sidenav">
@@ -8,10 +9,10 @@
     <a href="{% url 'src:profile' %}"
       ><i class="fa-regular fa-circle-user fa-2xl"></i
     ></a>
-    <span style="font-size: 24px">{{user.get_username}}</span>
+    <span class="ppp" style="font-size: 24px">{{user.get_username}}</span>
   </div>
-  <a href="{% url 'src:home' %}"><i class="fa-solid fa-house"></i> Home</a>
-  <a href="#"><i class="fa-solid fa-shapes"></i> Category</a>
-  <a href="#"><i class="fa-solid fa-list"></i> Order</a>
-  <a href="#"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+  <a href="{% url 'src:home' %}"><i class="fa-solid fa-house"></i> <span class="ppp"> Home </span></a>
+  <a href="#"><i class="fa-solid fa-shapes"></i> <span class="ppp">Category</span></a>
+  <a href="#"><i class="fa-solid fa-list"></i> <span class="ppp">Order</span></a>
+  <a href="#"><i class="fa-solid fa-clock-rotate-left"></i> <span class="ppp">History</span></a>
 </div>

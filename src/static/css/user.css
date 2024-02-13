@@ -3,7 +3,7 @@ body {
   padding: 0;
 }
 
-.topnav {
+.header {
   top: 0;
   position: sticky;
   background-color: #004b81;
@@ -12,13 +12,13 @@ body {
   display: flex;
 }
 
-.topnav img {
+.header img {
   max-width: 100px;
   height: auto;
   padding-left: 25px;
 }
 
-.topnav h1 {
+.header-title {
   color: white;
   font-family: "Koh Santepheap";
   margin-left: 20px;
@@ -31,17 +31,13 @@ body {
 }
 
 .sidenav {
-  min-height: 100vh;
-  width: auto;
-  position: fixed;
-  z-index: 1;
-  top: 30;
-  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 200px;
   background-color: #d9d9d9;
-  overflow-x: hidden;
-  padding-top: 20px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
 }
 
 .sidenav a {
@@ -60,9 +56,9 @@ body {
 }
 
 main {
-  margin-left: 180px;
-  font-family: Arial, Helvetica, sans-serif;
-  padding-right: 100px;
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
 }
 
 .prof-info {
@@ -70,16 +66,59 @@ main {
   flex-direction: column;
 }
 
-.home-row{
+.product-row{
   display: flex;
-  border: #060606 ;
 }
 
-@media screen and (max-height: 450px) {
+.product-column{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  text-align: center;
+  font-family: arial;
+}
+
+.order {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 700px) {
   .sidenav {
-    padding-top: 15px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
   }
   .sidenav a {
-    font-size: 18px;
+    float: left;
+    font-size: 24px;
+  }
+  .ppp{
+    display: none;
+  }
+
+  main{
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 316px){
+  .sidenav a {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 543px){
+  .header{
+    display: none;
   }
 }
