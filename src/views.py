@@ -41,6 +41,11 @@ def profile(request):
     return render(request,"users/profile.html",{"editform":userprof})
 
 @login_required
+def category(request):
+    context = {"products":Item.objects.all()}
+    return render(request,"users/category.html")
+
+@login_required
 def order(request):
     return render(request, "users/order.html")
 
