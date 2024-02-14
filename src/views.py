@@ -45,8 +45,14 @@ def profile(request):
 
 @login_required
 def category(request):
-    context = {"products":Item.objects.all()}
-    return render(request,"users/category.html",context)
+    if (request.method == "POST"):
+        rooms = request.POST.get("room")
+        condition = request.POST.get("condition")
+        display= Item.objects.filter(room=rooms,condition=condition)
+        return render(request,"users/category.html",{"Items":display})
+    else:
+        search = Item.objects.filter()
+        return render(request,"users/category.html",{"Items":search})
 
 @login_required
 def order(request):

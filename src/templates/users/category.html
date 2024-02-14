@@ -6,8 +6,22 @@
 {% block contents %}
 <main> 
     <h1 style="text-align: center;">Barang yang tersedia</h1>
+    <form method="POST" class="dropdown">
+        {% csrf_token %}
+        <select name="room">
+            <option selected disabled=true>Select Room</option>
+            <option>IT</option>
+            <option>DKV</option>
+        </select>
+        <select name="condition">
+            <option selected disabled=true>Select Condition</option>
+            <option>Normal</option>
+            <option>Broken</option>
+        </select>
+        <input type="submit" value="Search">
+    </form>
     <div class="product-row">
-        {% for product in products %}
+        {% for product in Items %}
             <div class="product-column">
                 <img src="{{ product.image.url }}" width="100px" height="100px">
                 <h1 class="product-name">{{ product.name }} </h1>

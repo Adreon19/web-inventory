@@ -11,8 +11,8 @@ ITEMS = (
 )
 
 ROOMS = (
-  ("IT ROOM", "IT ROOM"),
-  ("DKV ROOM","DKV ROOM")
+  ("IT", "IT"),
+  ("DKV","DKV")
 )
 
 CONDITION = (
