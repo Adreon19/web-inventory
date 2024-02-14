@@ -1,6 +1,6 @@
 {% extends "layout/base.html" %}
 {% load static%}
-{% block title %} category {% endblock %}
+{% block title %} Category {% endblock %}
 {% block css%} <link rel="stylesheet" href="{% static 'css/user.css'%}"> {% endblock%}
 {% block navbar %} {% include 'components/usernav.html' %} {% endblock navbar%}
 {% block contents %}
@@ -10,8 +10,10 @@
         {% for product in products %}
             <div class="product-column">
                 <img src="{{ product.image.url }}" width="100px" height="100px">
-                <h1 class="product-name">{{ product.name }}</h1>
-                <p>jumlah: {{ product.quantity }}</p>
+                <h1 class="product-name">{{ product.name }} </h1>
+                <p>Quantity: {{ product.quantity }} </p>
+                <p>Condition: {{ product.condition}} </p>
+                <p>Room: {{ product.room}} </p>
                 <button class="order">Pinjam</buttom>
             </div>
         {% endfor %}

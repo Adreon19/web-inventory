@@ -2,7 +2,8 @@
 {% load static %}
 {%block title%} Metland Inventory{%endblock %} 
 {%block css %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}" /> {% endblock %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" /> 
+{% endblock %}
 {%block navbar%} {%include 'components/indexnav.html'%} {%endblock navbar%}
 {%block contents%}
 <main>
@@ -16,3 +17,4 @@
   <div class="about-section"></div>
 </main>
 {%endblock contents%}
+{% block footer%} {% include 'components/footer.html'%}{% endblock footer%}
