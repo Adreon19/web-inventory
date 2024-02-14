@@ -1,10 +1,18 @@
-{%extends 'layout/base.html'%} {%load static%} {%block title%} Halaman Utama
-{%endblock %} {%block css %}
+{%extends 'layout/base.html'%} 
+{% load static %}
+{%block title%} Metland Inventory{%endblock %} 
+{%block css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}" /> {% endblock %}
 {%block navbar%} {%include 'components/indexnav.html'%} {%endblock navbar%}
 {%block contents%}
-<div class="elemen">
-  <img src="{%static 'img/metlen.webp'%}" alt="image" />
-  <h1>Welcome To Inventory Metland School</h1>
-</div>
+<main>
+  <div class="hero-section">
+    <div class="image"></div>
+    <div class="hero-text">
+      <h1 style="font-size:50px">Metland Inventory</h1>
+      <p>Tempat peminjaman barang-barang</p>
+    </div>
+  </div>
+  <div class="about-section"></div>
+</main>
 {%endblock contents%}

@@ -1,11 +1,9 @@
-{%extends "layout/base.html"%}{% load static %} {%block title %} Home {%endblock%}
-{%block css%}
-<link rel="stylesheet" href="{% static 'css/user.css' %}" /> 
-{%endblock%}
-{%block navbar%} 
-{%include "components/usernav.html" %}
-{%endblock navbar%} 
-{%block contents%} 
+{% extends "layout/base.html" %}
+{% load static%}
+{% block title %} category {% endblock %}
+{% block css%} <link rel="stylesheet" href="{% static 'css/user.css'%}"> {% endblock%}
+{% block navbar %} {% include 'components/usernav.html' %} {% endblock navbar%}
+{% block contents %}
 <main> 
     <h1 style="text-align: center;">Barang yang tersedia</h1>
     <div class="product-row">
@@ -19,4 +17,4 @@
         {% endfor %}
     </div>
 </main>
-{%endblock contents%}
+{% endblock contents %}
