@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import RegistsForm, UpdateUserProfile
 from .models import Item
@@ -22,6 +23,8 @@ def register(request):
         forms = RegistsForm(request.POST or None)
         if forms.is_valid():
             forms.save()
+            client = forms.cleaned_data.get('username')
+            messages.success(request,f"Create account success for {client}. Continue to login")
             return redirect("src:login")
     else:
         forms = RegistsForm()
@@ -42,8 +45,14 @@ def profile(request):
 
 @login_required
 def category(request):
-    context = {"products":Item.objects.all()}
-    return render(request,"users/category.html")
+    if (request.method == "POST"):
+        rooms = request.POST.get("room")
+        condition = request.POST.get("condition")
+        display= Item.objects.filter(room=rooms,condition=condition)
+        return render(request,"users/category.html",{"Items":display})
+    else:
+        search = Item.objects.filter()
+        return render(request,"users/category.html",{"Items":search})
 
 @login_required
 def order(request):

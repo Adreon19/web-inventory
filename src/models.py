@@ -6,13 +6,26 @@ from django.contrib.auth.models import User
 ITEMS = (
   ("Electronics","Electronics"),
   ("Cables","Cables"),
-  ("Accessories","Accessories")
+  ("Accessories","Accessories"),
+  ("Other","Other")
+)
+
+ROOMS = (
+  ("IT", "IT"),
+  ("DKV","DKV")
+)
+
+CONDITION = (
+  ("Normal","Normal"),
+  ("Broken","Broken")
 )
 
 class Item(models.Model):
   name = models.CharField(max_length=100, null=True)
   category = models.CharField(max_length=100, choices=ITEMS, null=True)
+  condition = models.CharField(max_length=100, choices=CONDITION, null=True)
   quantity = models.PositiveIntegerField(null=True)
+  room = models.CharField(max_length=100, choices=ROOMS, null=True)
   image = models.ImageField(null=True,blank=True)
   
   def __str__(self):

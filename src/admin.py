@@ -8,7 +8,7 @@ admin.site.site_title = "Web Inventory"
 admin.site.index_title = "Dashboard"
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ("name","category","quantity")
+    list_display = ("name","category","condition","quantity","room")
     list_filter = ["category"]
     
 class OrderAdmin(admin.ModelAdmin):
