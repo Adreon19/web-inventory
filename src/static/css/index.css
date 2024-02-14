@@ -12,56 +12,38 @@ body {
   background: #004b81;
 }
 
-.navbar img {
-  margin: 6px;
-  padding: 0 20px;
-  width: 100px;
-}
-
 .navbar a {
-  color: #fff;
+  float: right;
+  display: block;
+  color: #f2f2f2;
   text-align: center;
-  font-family: "Koh Santepheap";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  padding: 14px 16px;
   text-decoration: none;
-  float: inline-end;
-  width: 10%;
+  font-size: 17px;
 }
 
-.daftar:hover {
-  color: #0e2230;
-}
-
-.masuk:hover {
-  color: white;
-  background-color: #24714e;
-  border: 3px solid #24714e;
-}
-
-.masuk {
-  border: 3px solid #35a372;
-  border-radius: 15px;
-  background-color: #35a372;
-}
-
-.elemen img {
-  position: relative;
-  filter: blur(3px);
-  z-index: 0;
-  mix-blend-mode: luminosity;
-  height: 50%;
+.hero-section {
+  background-image: url("/static/img/metlen.webp");
   background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-.elemen h1 {
+.hero-text{
+  font-weight: bold;
   position: absolute;
-  color: #292929;
-  font-size: 45px;
-  justify-content: center;
-  text-align: center;
+  color:#004b81;
   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
 }

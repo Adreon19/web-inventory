@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'src'
+    'src',
 ]
 
 MIDDLEWARE = [
@@ -138,5 +138,5 @@ LOGOUT_REDIRECT_URL = "src:login"
 JAZZMIN_SETTINGS = {
     'site_header': "Administrator",
     'site_brand': 'Website Inventory',
-    'site_icon' : STATIC_URL + "img/metland.png"
+    'site_icon' : "/static/img/metland.png"
 }
