@@ -138,5 +138,7 @@ LOGOUT_REDIRECT_URL = "src:login"
 JAZZMIN_SETTINGS = {
     'site_header': "Administrator",
     'site_brand': 'Website Inventory',
-    'site_icon' : "/static/img/metland.png"
+    'site_logo' : "img/metland.png",
+    "welcome_sign": "Inventory Metland School",
+    "copyright": ""
 }
