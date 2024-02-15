@@ -65,15 +65,13 @@ main {
   flex-direction: column;
 }
 
-.product-row{
-  display: flex;
-}
-
 .product-column{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   text-align: center;
   font-family: arial;
+  margin: 5px;
+  float: left;
 }
 
 .order {
