@@ -6,7 +6,8 @@ from django.conf import settings
 
 urlpatterns = [
         path("",views.index, name="index"),
-        path("accounts/",include("django.contrib.auth.urls")),
+        #path("accounts/",include("django.contrib.auth.urls")),
+        path("accounts/login/",views.signin,name="login"),
         path("accounts/signup",views.register, name="register"),
         path("accounts/logout/",auth_views.LogoutView.as_view,name="logout"),
         path("accounts/password_change/",auth_views.PasswordChangeView.as_view,name="password_change"),
