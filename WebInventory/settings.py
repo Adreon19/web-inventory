@@ -139,6 +139,6 @@ JAZZMIN_SETTINGS = {
     'site_header': "Administrator",
     'site_brand': 'Metschoo Inventory',
     'site_logo' : "img/metland.png",
-    "welcome_sign": "Inventory Metland School",
+    "welcome_sign": "Administrator Panel",
     "copyright": ""
 }

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login
+from django.contrib.auth import login,logout
+from django.contrib.auth.forms import PasswordChangeForm,PasswordResetForm
 from .forms import RegistsForm, UpdateUserProfile,LoginForm
 from .models import Item
 
@@ -24,8 +24,6 @@ def register(request):
         forms = RegistsForm(request.POST or None)
         if forms.is_valid():
             forms.save()
-            client = forms.cleaned_data.get('username')
-            messages.success(request,f"Create account success for {client}. Continue to login")
             return redirect("src:login")
     else:
         forms = RegistsForm()
@@ -43,6 +41,25 @@ def signin(request):
         forms = LoginForm(request)
         
     return render(request,"registration/login.html",{"form":forms})
+
+def logouts(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect("src:login")
+    
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user,data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("src:home")
+    else:
+        form = PasswordChangeForm(user=request.user)
+    return render(request,"registration/password_change.html",{"form":form})
+
+def reset_password(request):
+    return render(request, "registration/password_reset_form.html")
+
 @login_required
 def profile(request):
     if (request.method == "POST"):

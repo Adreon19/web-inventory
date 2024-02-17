@@ -1,6 +1,7 @@
-{%extends 'layout/base.html'%} {% load static %} {%block title %} Register
-{%endblock%} {%block css %}
-<link rel="stylesheet" href="{% static 'css/register.css' %}" /> {%endblock %}
+{%extends 'layout/base.html'%} 
+{% load static %} 
+{%block title %} Register {%endblock%} 
+{%block css %} <link rel="stylesheet" href="{% static 'css/auth.css' %}" /> {%endblock %}
 {% block contents %}
 <div id="container">
   {%include 'components/header.html' with title="Welcome"%}
@@ -9,7 +10,7 @@
     <h1 class="title-form">Register Account</h1>
     {% if form.errors %}
       {% for _ , value in form.errors.items%}
-        <div class="err">{{value}}</div>
+        <div class="callout callout-danger">{{value}}</div>
       {% endfor %}
     {%endif%}<br>
     {{form.username}}<br>
