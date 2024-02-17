@@ -51,7 +51,7 @@ form {
   flex: 1 1 0;
 }
 
-#id_username, #id_password {
+.textbox {
   width: 306px;
   height: 40px;
   border-radius: 11px;

@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import RegistsForm, UpdateUserProfile
+from django.contrib.auth import login
+from .forms import RegistsForm, UpdateUserProfile,LoginForm
 from .models import Item
 
 from django.views.decorators.csrf import csrf_protect
@@ -31,6 +32,17 @@ def register(request):
 
     return render(request, "registration/register.html",{"form":forms})
 
+def signin(request):
+    if request.method == 'POST':
+        forms = LoginForm(request, data=request.POST)
+        if forms.is_valid():
+            users = forms.get_user()
+            login(request,users)
+            return redirect("src:home")
+    else:
+        forms = LoginForm(request)
+        
+    return render(request,"registration/login.html",{"form":forms})
 @login_required
 def profile(request):
     if (request.method == "POST"):

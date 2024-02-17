@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms.widgets import PasswordInput, TextInput, EmailInput
 
@@ -12,7 +12,7 @@ class RegistsForm(UserCreationForm):
     model = User
     fields = ["username","email","password1","password2"]
     
-class LoginForm(forms.ModelForm):
+class LoginForm(AuthenticationForm):
   username = forms.CharField(widget=TextInput(attrs={'class':'textbox','placeholder':'Username'}))
   password = forms.CharField(widget=PasswordInput(attrs={'class':'textbox','id':'password','placeholder':'Password'}))
   class Meta:
@@ -28,3 +28,8 @@ class UpdateUserProfile(forms.ModelForm):
   class Meta:
     model = User
     fields = ["first_name","last_name","username","email"]
+    
+class PasswordChangeForm(PasswordChangeForm):
+  class Meta:
+    model = User
+    fields = ['old_password','new_password1','new_password2']
