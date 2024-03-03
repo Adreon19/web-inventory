@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    "admin_honeypot",
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
