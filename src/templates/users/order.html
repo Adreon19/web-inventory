@@ -6,5 +6,11 @@
 {% block contents %}
 <main>
   <h1>Order</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <label>Nama peminjam</label>
+    <input type="text" value="{{user.get_username}}" readonly>
+  </form>
 </main>
 {% endblock contents %}

@@ -47,11 +47,15 @@ class tbl_barang(models.Model):
   def __str__(self):
     return f"{self.name}"
   
-class tbl_order(models.Model):
-  client = models.ForeignKey(User, models.CASCADE,null=True)
-  product = models.ForeignKey(tbl_barang, on_delete=models.CASCADE, null=True)
-  order_quantity = models.PositiveIntegerField(null=True)
-  date = models.DateTimeField(auto_now_add=True)
+class tbl_peminjaman(models.Model):
+  user = models.ForeignKey(User, models.CASCADE,null=True)
+  item = models.ForeignKey(tbl_barang, on_delete=models.CASCADE, null=True)
+  condition = models.CharField(max_length=100,choices=CONDITION,null=True)
+  room = models.CharField(max_length=100,choices=ROOMS,null=True)
+  lending_quantity = models.PositiveIntegerField(null=True)
+  date_lending = models.DateTimeField(default=datetime.datetime.now,editable=False)
+  return_time = models.DateTimeField(blank=True, null=True, editable=False)
+  status = models.CharField(max_length=50,null=True)
 
 class tbl_siswa(models.Model):
   username = models.CharField(max_length=255)

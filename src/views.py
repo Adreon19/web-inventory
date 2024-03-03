@@ -89,4 +89,7 @@ def order(request):
 
 @login_required
 def history(request):
-    return render(request, "users/history.html")
+    context = {
+        "peminjaman":tbl_peminjaman.objects.all()
+    }
+    return render(request, "users/history.html",context)
