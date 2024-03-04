@@ -1,18 +1,25 @@
 from django.contrib import admin
-from .models import Item, Order
+from django.contrib.auth.models import Group
+from .models import *
 
 # Register your models here.
 
 admin.site.site_header = "Administrator Panel"
-admin.site.site_title = "Web Inventory"
+admin.site.site_title = "Inventory"
 admin.site.index_title = "Dashboard"
 
-class ItemAdmin(admin.ModelAdmin):
+class ItemConfigAdmin(admin.ModelAdmin):
     list_display = ("name","category","condition","quantity","room")
     list_filter = ["category","room","condition"]
     
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ("client","product","order_quantity","date")
+class LendingConfigAdmin(admin.ModelAdmin):
+    list_display = ("user","item","condition","room","lending_quantity","date_lending","return_time","status")
 
-admin.site.register(Item,ItemAdmin)
-admin.site.register(Order, OrderAdmin)
+class SiswaConfigAdmin(admin.ModelAdmin):
+    list_display = ("username","jurusan","kelas","nomortelp","email","date_joined","last_login")
+    list_filter = ["jurusan","kelas"]
+
+admin.site.unregister(Group)
+admin.site.register(tbl_barang,ItemConfigAdmin)
+admin.site.register(tbl_peminjaman, LendingConfigAdmin)
+admin.site.register(tbl_siswa,SiswaConfigAdmin)

@@ -3,8 +3,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout
 from django.contrib.auth.forms import PasswordChangeForm,PasswordResetForm
-from .forms import RegistsForm, UpdateUserProfile,LoginForm
-from .models import Item
+from .forms import *
+from .models import *
 
 from django.views.decorators.csrf import csrf_protect
 
@@ -16,7 +16,7 @@ def index(request):
 @csrf_protect
 @login_required
 def home(request):
-    context = {"products":Item.objects.all()}
+    context = {"products":tbl_barang.objects.all()}
     return render(request,"users/home.html",context)
 
 def register(request):
@@ -77,10 +77,10 @@ def category(request):
     if (request.method == "POST"):
         rooms = request.POST.get("room")
         condition = request.POST.get("condition")
-        display= Item.objects.filter(room=rooms,condition=condition)
+        display= tbl_barang.objects.filter(room=rooms,condition=condition)
         return render(request,"users/category.html",{"Items":display})
     else:
-        search = Item.objects.filter()
+        search = tbl_barang.objects.filter()
         return render(request,"users/category.html",{"Items":search})
 
 @login_required
@@ -89,4 +89,7 @@ def order(request):
 
 @login_required
 def history(request):
-    return render(request, "users/history.html")
+    context = {
+        "peminjaman":tbl_peminjaman.objects.all()
+    }
+    return render(request, "users/history.html",context)
