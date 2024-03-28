@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout
@@ -93,3 +93,18 @@ def history(request):
         "peminjaman":tbl_peminjaman.objects.all()
     }
     return render(request, "users/history.html",context)
+
+def item_detail(request,pk):
+    item = tbl_barang.objects.get(pk=pk)
+    if request.method == 'POST':
+        quantity = int(request.POST['quantity'])
+        if quantity <= item.quantity: 
+            order = tbl_peminjaman(item=item, lending_quantity=quantity)
+            order.save()
+            item.quantity -= quantity
+            item.save()
+            return redirect('src:history')
+        else:
+            error_message = "Insufficient quantity available"
+            return render(request, 'core/item_detail.html', {'item': item, 'error_message': error_message})
+    return render(request, 'core/item_detail.html', {'item': item})

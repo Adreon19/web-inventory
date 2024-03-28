@@ -1,0 +1,18 @@
+{% extends "layout/base.html" %}
+{% block title %} {{ item.name }} - {{ item.room}}{% endblock %}
+{% block contents%}
+<img src"{{ item.image.url}}" alt="{{ item.name}}">
+{{ item.name}}
+{{ item.category}}
+{{ item.condition}}
+{{ item.quantity}}
+<form method="POST">
+    {% csrf_token %}
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" min="1" value="1" max="{{ item.quantity}} "> 
+    <input type="submit" value="Order">
+</form>
+{% if error_message %}
+    <p>{{ error_message }}</p>
+{% endif %}
+{% endblock %}

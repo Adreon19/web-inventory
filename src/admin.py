@@ -15,11 +15,7 @@ class ItemConfigAdmin(admin.ModelAdmin):
 class LendingConfigAdmin(admin.ModelAdmin):
     list_display = ("user","item","condition","room","lending_quantity","date_lending","return_time","status")
 
-class SiswaConfigAdmin(admin.ModelAdmin):
-    list_display = ("username","jurusan","kelas","nomortelp","email","date_joined","last_login")
-    list_filter = ["jurusan","kelas"]
 
 admin.site.unregister(Group)
 admin.site.register(tbl_barang,ItemConfigAdmin)
 admin.site.register(tbl_peminjaman, LendingConfigAdmin)
-admin.site.register(tbl_siswa,SiswaConfigAdmin)

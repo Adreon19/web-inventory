@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from django.contrib.auth.models import User,AbstractUser
+from django.contrib.auth.models import User
 import datetime
 
 # Create your models here.
@@ -22,17 +22,10 @@ CONDITION = (
   ("Broken","Broken")
 )
 
-MAJOR = (
-  ("PPLG","PPLG"),
-  ("DKV","DKV"),
-  ("HOSPY","HOSPY"),
-  ("AKUTANSI","AKUTANSI"),
-)
-
-CLASS = (
-  (10,10),
-  (11,11),
-  (12,12)
+STATUS_CHOICES = (
+  ('Diproses', 'Diproses'),
+  ('Dikembalikan', 'Dikembalikan'),
+  ('Ditolak', 'Ditolak'),
 )
 
 class tbl_barang(models.Model):
@@ -54,15 +47,5 @@ class tbl_peminjaman(models.Model):
   room = models.CharField(max_length=100,choices=ROOMS,null=True)
   lending_quantity = models.PositiveIntegerField(null=True)
   date_lending = models.DateTimeField(default=datetime.datetime.now,editable=False)
-  return_time = models.DateTimeField(blank=True, null=True, editable=False)
-  status = models.CharField(max_length=50,null=True)
-
-class tbl_siswa(models.Model):
-  username = models.CharField(max_length=255)
-  password = models.CharField(max_length=100)
-  jurusan = models.CharField(max_length=50,choices=MAJOR,null=True)
-  kelas = models.IntegerField(choices=CLASS)
-  nomortelp = PhoneNumberField(blank=True)
-  email = models.EmailField()
-  date_joined = models.DateTimeField(default=datetime.datetime.now)
-  last_login = models.DateTimeField(blank=True,null=True)
+  return_time = models.DateTimeField(default=datetime.datetime.now)
+  status = models.CharField(max_length=50,choices=STATUS_CHOICES,null=True)
