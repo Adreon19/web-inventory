@@ -9,6 +9,9 @@
 <form method="POST">
     {% csrf_token %}
     <label for="quantity">Quantity:</label>
+    <input type="text" name="username" value="{{ user.get_username }}" readonly>
+    <input type="text" name="condition" value="{{ item.condition }}" readonly>
+    <input type="text" name="room" value="{{ item.room }}" readonly>
     <input type="number" name="quantity" id="quantity" min="1" value="1" max="{{ item.quantity}} "> 
     <input type="submit" value="Order">
 </form>

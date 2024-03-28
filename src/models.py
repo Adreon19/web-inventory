@@ -41,7 +41,7 @@ class tbl_barang(models.Model):
     return f"{self.name}"
   
 class tbl_peminjaman(models.Model):
-  user = models.ForeignKey(User, models.CASCADE,null=True)
+  client = models.CharField(max_length=255,editable=False)
   item = models.ForeignKey(tbl_barang, on_delete=models.CASCADE, null=True)
   condition = models.CharField(max_length=100,choices=CONDITION,null=True)
   room = models.CharField(max_length=100,choices=ROOMS,null=True)

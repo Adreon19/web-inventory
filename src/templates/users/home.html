@@ -7,16 +7,7 @@
 {%endblock navbar%} 
 {%block contents%} 
 <main> 
-    <h1 style="text-align: center;">Barang yang tersedia</h1>
-    <div class="product-row">
-        {% for product in products %}
-            <div class="product-column">
-                <img src="{{ product.image.url }}" style="width: 100%;">
-                <h1 class="product-name">{{ product.name }}</h1>
-                <p>quantity: {{ product.quantity }}</p>
-                <button class="order">Pinjam</buttom>
-            </div>
-        {% endfor %}
-    </div>
+    <h1 style="text-align: center;">Selamat datang {{ user.get_username }}</h1>
+    
 </main>
 {%endblock contents%}

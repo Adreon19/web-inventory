@@ -13,7 +13,7 @@ class ItemConfigAdmin(admin.ModelAdmin):
     list_filter = ["category","room","condition"]
     
 class LendingConfigAdmin(admin.ModelAdmin):
-    list_display = ("user","item","condition","room","lending_quantity","date_lending","return_time","status")
+    list_display = ("client","item","condition","room","lending_quantity","date_lending","return_time","status")
 
 
 admin.site.unregister(Group)

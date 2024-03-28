@@ -98,8 +98,17 @@ def item_detail(request,pk):
     item = tbl_barang.objects.get(pk=pk)
     if request.method == 'POST':
         quantity = int(request.POST['quantity'])
+        user = request.POST['username']
+        condition = request.POST['condition']
+        room = request.POST['room']
         if quantity <= item.quantity: 
-            order = tbl_peminjaman(item=item, lending_quantity=quantity)
+            order = tbl_peminjaman(
+                item=item, 
+                client=user,
+                lending_quantity=quantity, 
+                condition=condition,
+                room=room
+            )
             order.save()
             item.quantity -= quantity
             item.save()

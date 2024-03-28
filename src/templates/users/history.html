@@ -17,6 +17,7 @@
       <th>Status</th>
     </tr>
     {% for lending in peminjaman%}
+      {% if lending.client == user.get_username%}
       <tr>
         <td>{{lending.item}}</td>
         <td>{{lending.condition}}</td>
@@ -26,6 +27,7 @@
         <td>{{lending.return_date}}</td>
         <td>{{lending.status}}</td>
       </tr>
+      {% endif %}
     {%endfor%}
   </table>
 </main>
