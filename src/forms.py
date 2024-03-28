@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
-from .models import tbl_siswa
 from django.contrib.auth.models import User
 from django.forms.widgets import PasswordInput, TextInput, EmailInput
 
