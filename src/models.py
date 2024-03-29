@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 import datetime
 
 # Create your models here.
@@ -19,16 +19,74 @@ ROOMS = (
 
 CONDITION = (
   ("Normal","Normal"),
-  ("Broken","Broken")
+  ("Rusak","Rusak")
 )
 
 STATUS_CHOICES = (
   ('Diproses', 'Diproses'),
   ('Dikembalikan', 'Dikembalikan'),
+  ('Diterima', 'Diterima'),
   ('Ditolak', 'Ditolak'),
 )
 
-class tbl_barang(models.Model):
+class UserManager(BaseUserManager):
+    def create_user(self, username, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(username=username, email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, username, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(username, email, password, **extra_fields)
+
+
+class tbl_account(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(max_length=150, unique=True)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    email = models.EmailField(unique=True)
+    phonenumber = PhoneNumberField()
+    date_joined = models.DateTimeField(default=datetime.datetime.now)
+
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = UserManager()
+
+    USERNAME_FIELD = 'username'
+    EMAIL_FIELD = 'email'
+    REQUIRED_FIELDS = ['email']
+
+    # Specify unique related names for groups and user_permissions
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name='groups',
+        blank=True,
+        help_text='The groups this user belongs to.',
+        related_name='client_set',
+        related_query_name='client',
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_name='client_set',
+        related_query_name='client',
+    )
+
+    def __str__(self):
+       return self.username
+
+    class Meta:
+        db_table = 'tbl_client'
+
+class tbl_item(models.Model):
   id = models.AutoField(primary_key=True)
   name = models.CharField(max_length=100, null=True)
   category = models.CharField(max_length=100, choices=ITEMS, null=True)
@@ -40,12 +98,15 @@ class tbl_barang(models.Model):
   def __str__(self):
     return f"{self.name}"
   
-class tbl_peminjaman(models.Model):
-  client = models.CharField(max_length=255,editable=False)
-  item = models.ForeignKey(tbl_barang, on_delete=models.CASCADE, null=True)
-  condition = models.CharField(max_length=100,choices=CONDITION,null=True)
-  room = models.CharField(max_length=100,choices=ROOMS,null=True)
-  lending_quantity = models.PositiveIntegerField(null=True)
+class tbl_borrow(models.Model):
+  client = models.ForeignKey(tbl_account,on_delete=models.CASCADE,max_length=255,editable=False)
+  item = models.ForeignKey(tbl_item, on_delete=models.CASCADE, null=True, editable=False)
+  condition = models.CharField(max_length=100,choices=CONDITION,null=True, editable=False)
+  room = models.CharField(max_length=100,choices=ROOMS,null=True, editable=False)
+  lending_quantity = models.PositiveIntegerField(null=True, editable=False)
   date_lending = models.DateTimeField(default=datetime.datetime.now,editable=False)
-  return_time = models.DateTimeField(default=datetime.datetime.now)
+  return_time = models.DateTimeField(null=True, blank=True)
   status = models.CharField(max_length=50,choices=STATUS_CHOICES,null=True)
+
+class tbl_contact(models.Model):
+  pass

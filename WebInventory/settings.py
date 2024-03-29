@@ -143,3 +143,5 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Administrator Panel",
     "copyright": ""
 }
+
+AUTH_USER_MODEL = 'src.tbl_account'
