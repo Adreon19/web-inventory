@@ -38,4 +38,4 @@ class CustomUserAdmin(UserAdmin):
 admin.site.unregister(Group)
 admin.site.register(tbl_account, CustomUserAdmin)
 admin.site.register(tbl_item,ItemConfigAdmin)
-admin.site.register(tbl_borrow, LendingConfigAdmin)
+admin.site.register(tbl_lend, LendingConfigAdmin)

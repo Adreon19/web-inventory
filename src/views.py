@@ -91,12 +91,12 @@ def category(request):
 
 @login_required
 def order(request):
-    return render(request, "users/order.html")
+    return render(request, "users/order.html", {"borrow":tbl_lend.objects.all()})
 
 @login_required
 def history(request):
     context = {
-        "peminjaman":tbl_borrow.objects.all()
+        "peminjaman":tbl_lend.objects.all()
     }
     return render(request, "users/history.html",context)
 
@@ -108,12 +108,13 @@ def item_detail(request,pk):
         condition = request.POST['condition']
         room = request.POST['room']
         if quantity <= item.quantity: 
-            order = tbl_borrow(
+            order = tbl_lend(
                 item=item, 
                 client=get_object_or_404(tbl_account, username=user),
                 lending_quantity=quantity, 
                 condition=condition,
-                room=room
+                room=room,
+                status="Diproses"
             )
             order.save()
             item.quantity -= quantity

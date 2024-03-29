@@ -6,6 +6,23 @@
 {% block contents %}
 <main>
   <h1>Order</h1>
-  
+  {% for lend in borrow%}
+  {% if lend.client == user %}
+    {% if lend.status == "Diproses"%}
+    <div>
+      <h3>{{ lend.item }}</h3>
+      <p>{{ lend.lending_quantity}}</p>
+      <p>{{ lend.status }}</p>
+    </div>
+    {% elif lend.status == "Diterima" %}
+    <div>
+      <h3>{{ lend.item }}</h3>
+      <p>{{ lend.lending_quantity}}</p>
+      <p>{{ lend.status }}</p>
+      <form method="POST"> {% csrf_token %} <input type="submit" name="kembali" value="kembalikan"></form>
+    </div>
+    {% endif %}
+  {% endif %}
+  {% endfor %}
 </main>
 {% endblock contents %}

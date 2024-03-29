@@ -18,15 +18,17 @@
     </tr>
     {% for lending in peminjaman%}
       {% if lending.client == user%}
-      <tr>
-        <td>{{lending.item}}</td>
-        <td>{{lending.condition}}</td>
-        <td>{{lending.room}}</td>
-        <td>{{lending.lending_quantity}}</td>
-        <td>{{lending.date_lending}}</td>
-        <td>{{lending.return_date}}</td>
-        <td>{{lending.status}}</td>
-      </tr>
+        {% if lending.status == "Ditolak" or lending.status == "Dikembalikan" %}
+        <tr>
+          <td>{{lending.item}}</td>
+          <td>{{lending.condition}}</td>
+          <td>{{lending.room}}</td>
+          <td>{{lending.lending_quantity}}</td>
+          <td>{{lending.date_lending}}</td>
+          <td>{{lending.return_date}}</td>
+          <td>{{lending.status}}</td>
+        </tr>
+        {% endif %}
       {% endif %}
     {%endfor%}
   </table>

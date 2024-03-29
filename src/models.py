@@ -98,14 +98,14 @@ class tbl_item(models.Model):
   def __str__(self):
     return f"{self.name}"
   
-class tbl_borrow(models.Model):
+class tbl_lend(models.Model):
   client = models.ForeignKey(tbl_account,on_delete=models.CASCADE,max_length=255,editable=False)
   item = models.ForeignKey(tbl_item, on_delete=models.CASCADE, null=True, editable=False)
   condition = models.CharField(max_length=100,choices=CONDITION,null=True, editable=False)
   room = models.CharField(max_length=100,choices=ROOMS,null=True, editable=False)
   lending_quantity = models.PositiveIntegerField(null=True, editable=False)
   date_lending = models.DateTimeField(default=datetime.datetime.now,editable=False)
-  return_time = models.DateTimeField(null=True, blank=True)
+  return_time = models.DateTimeField(null=True, blank=True, editable=False)
   status = models.CharField(max_length=50,choices=STATUS_CHOICES,null=True)
 
 class tbl_contact(models.Model):
