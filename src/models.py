@@ -99,9 +99,10 @@ class tbl_item(models.Model):
     return f"{self.name}"
   
 class tbl_loan(models.Model):
-  code = models.CharField(primary_key=True,editable=False, max_length=36)
+  id = models.CharField(primary_key=True,default=uuid.uuid4,editable=False, max_length=36)
   client = models.ForeignKey(tbl_account,on_delete=models.CASCADE,max_length=255,editable=False)
   item = models.ForeignKey(tbl_item, on_delete=models.CASCADE, null=True, editable=False)
+  item_code = models.CharField(editable=False, max_length=36)
   condition = models.CharField(max_length=100,choices=CONDITION,null=True, editable=False)
   room = models.CharField(max_length=100,choices=ROOMS,null=True, editable=False)
   lending_quantity = models.PositiveIntegerField(null=True, editable=False)

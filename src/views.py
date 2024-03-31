@@ -94,9 +94,10 @@ def category(request):
 def lending(request):
 
     if request.method == "POST":
-        code = request.POST["code"]
-        item = tbl_item.objects.get(pk=code)
-        loan = tbl_loan.objects.get(pk=code)
+        id = request.POST["lend-code"]
+        code = request.POST["item-code"]
+        item = get_object_or_404(tbl_item, id=code)
+        loan = tbl_loan.objects.get(pk=id)
         loan.status = "Dikembalikan"
         loan.return_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         loan.save()
@@ -124,7 +125,7 @@ def item_detail(request,pk):
         code= request.POST['code']
         if quantity <= item.quantity: 
             order = tbl_loan(
-                code=code,
+                item_code=code,
                 item=item, 
                 client=get_object_or_404(tbl_account, username=user),
                 lending_quantity=quantity, 
