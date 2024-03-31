@@ -37,7 +37,7 @@ class PasswordChangeForm(PasswordChangeForm):
     model = tbl_account
     fields = ['old_password','new_password1','new_password2']
 
-class ContactForm(forms.ModelForm):
+class ContactForm(forms.Form):
   class Meta:
     model = tbl_feedback
     field = ['subject','description']

@@ -1,7 +1,7 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-import datetime
+import datetime, uuid
 
 # Create your models here.
 
@@ -87,7 +87,7 @@ class tbl_account(AbstractBaseUser, PermissionsMixin):
         db_table = 'tbl_client'
 
 class tbl_item(models.Model):
-  id = models.AutoField(primary_key=True)
+  id = models.CharField(primary_key=True,default=uuid.uuid4,editable=False, max_length=36)
   name = models.CharField(max_length=100, null=True)
   category = models.CharField(max_length=100, choices=ITEMS, null=True)
   condition = models.CharField(max_length=100, choices=CONDITION, null=True)
@@ -98,7 +98,8 @@ class tbl_item(models.Model):
   def __str__(self):
     return f"{self.name}"
   
-class tbl_lend(models.Model):
+class tbl_loan(models.Model):
+  code = models.CharField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
   client = models.ForeignKey(tbl_account,on_delete=models.CASCADE,max_length=255,editable=False)
   item = models.ForeignKey(tbl_item, on_delete=models.CASCADE, null=True, editable=False)
   condition = models.CharField(max_length=100,choices=CONDITION,null=True, editable=False)

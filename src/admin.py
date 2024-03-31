@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import Group, User
-from .forms import RegistsForm
+from django.contrib.auth.models import Group
 from .models import *
 
 # Register your models here.
@@ -16,6 +15,7 @@ class ItemConfigAdmin(admin.ModelAdmin):
     
 class LendingConfigAdmin(admin.ModelAdmin):
     list_display = ("client","item","condition","room","lending_quantity","date_lending","return_time","status")
+    list_filter = ['status']
 
 class CustomUserAdmin(UserAdmin):
     model = tbl_account
@@ -35,7 +35,11 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('email', 'username', 'firstname', 'lastname', 'phonenumber')
     ordering = ('email',)
 
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('subject', 'description','date')
+
 admin.site.unregister(Group)
+admin.site.register(tbl_feedback, FeedbackAdmin)
 admin.site.register(tbl_account, CustomUserAdmin)
 admin.site.register(tbl_item,ItemConfigAdmin)
-admin.site.register(tbl_lend, LendingConfigAdmin)
+admin.site.register(tbl_loan, LendingConfigAdmin)
