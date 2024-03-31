@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout, authenticate
 from django.contrib.auth.forms import PasswordChangeForm
+import datetime
 from .forms import *
 from .models import *
 
@@ -91,6 +92,18 @@ def category(request):
 
 @login_required
 def lending(request):
+
+    if request.method == "POST":
+        code = request.POST["code"]
+        item = tbl_item.objects.get(pk=code)
+        loan = tbl_loan.objects.get(pk=code)
+        loan.status = "Dikembalikan"
+        loan.return_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        loan.save()
+        item.quantity += int(request.POST['quantity'])
+        item.save()
+        return redirect("src:history")
+
     return render(request, "pages/lending.html", {"borrow":tbl_loan.objects.all()})
 
 @login_required
@@ -100,6 +113,7 @@ def history(request):
     }
     return render(request, "pages/history.html",context)
 
+@login_required
 def item_detail(request,pk):
     item = tbl_item.objects.get(pk=pk)
     if request.method == 'POST':
@@ -107,8 +121,10 @@ def item_detail(request,pk):
         user = request.POST['username']
         condition = request.POST['condition']
         room = request.POST['room']
+        code= request.POST['code']
         if quantity <= item.quantity: 
             order = tbl_loan(
+                code=code,
                 item=item, 
                 client=get_object_or_404(tbl_account, username=user),
                 lending_quantity=quantity, 

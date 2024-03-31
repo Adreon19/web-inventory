@@ -5,7 +5,6 @@
 {% block navbar %} {% include 'components/usernav.html' %} {% endblock navbar%}
 {% block contents %}
 <main> 
-    <h1 style="text-align: center;">Barang yang tersedia</h1>
     <form method="POST" class="dropdown">
         {% csrf_token %}
         <select name="room">

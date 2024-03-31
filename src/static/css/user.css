@@ -105,6 +105,17 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+.manipulate {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: text;
+}
+
 @media screen and (max-width: 700px) {
   .sidenav {
     width: 100%;

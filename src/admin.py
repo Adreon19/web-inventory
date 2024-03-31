@@ -35,11 +35,11 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('email', 'username', 'firstname', 'lastname', 'phonenumber')
     ordering = ('email',)
 
-class FeedbackAdmin(admin.ModelAdmin):
+class FeedbackConfigAdmin(admin.ModelAdmin):
     list_display = ('subject', 'description','date')
 
 admin.site.unregister(Group)
-admin.site.register(tbl_feedback, FeedbackAdmin)
+admin.site.register(tbl_feedback, FeedbackConfigAdmin)
 admin.site.register(tbl_account, CustomUserAdmin)
-admin.site.register(tbl_item,ItemConfigAdmin)
+admin.site.register(tbl_item, ItemConfigAdmin)
 admin.site.register(tbl_loan, LendingConfigAdmin)

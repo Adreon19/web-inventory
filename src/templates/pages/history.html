@@ -5,7 +5,6 @@
 {% block navbar %} {% include "components/usernav.html"%} {% endblock navbar%}
 {% block contents %}
 <main>
-  <h1>Riwayat peminjaman</h1>
   <table>
     <tr>
       <th>Nama barang</th>
@@ -25,7 +24,7 @@
           <td>{{lending.room}}</td>
           <td>{{lending.lending_quantity}}</td>
           <td>{{lending.date_lending}}</td>
-          <td>{{lending.return_date}}</td>
+          <td>{{lending.return_time}}</td>
           <td>{{lending.status}}</td>
         </tr>
         {% endif %}
