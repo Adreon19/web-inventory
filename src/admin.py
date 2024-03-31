@@ -15,7 +15,7 @@ class ItemConfigAdmin(admin.ModelAdmin):
     
 class LendingConfigAdmin(admin.ModelAdmin):
     list_display = ("client","item","condition","room","lending_quantity","date_lending","return_time","status")
-    list_filter = ['status']
+    list_filter = ['item',"room"]
 
 class CustomUserAdmin(UserAdmin):
     model = tbl_account

@@ -19,14 +19,11 @@ ROOMS = (
 
 CONDITION = (
   ("Normal","Normal"),
-  ("Rusak","Rusak")
+  ("Broken","Broken")
 )
 
 STATUS_CHOICES = (
-  ('Diproses', 'Diproses'),
-  ('Dikembalikan', 'Dikembalikan'),
   ('Diterima', 'Diterima'),
-  ('Ditolak', 'Ditolak'),
 )
 
 class UserManager(BaseUserManager):
