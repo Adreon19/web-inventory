@@ -5,7 +5,7 @@
 {% block navbar %} {% include "components/usernav.html"%} {% endblock navbar%}
 {% block contents %}
 <main>
-  <h1>Order</h1>
+  <h1>Lending</h1>
   {% for lend in borrow%}
   {% if lend.client == user %}
     {% if lend.status == "Diproses"%}

@@ -15,6 +15,6 @@ urlpatterns = [
         path("user/category/",views.category,name="category"),
         path("user/category/<int:pk>",views.item_detail,name="item-detail"),
         path("user/profile/",views.profile, name="profile"),
-        path("user/order/",views.order,name="order"),
+        path("user/lending/",views.lending,name="lending"),
         path("user/history/",views.history,name="history")
 ]

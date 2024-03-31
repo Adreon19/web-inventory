@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
-from .models import tbl_account, tbl_contact
+from .models import tbl_account, tbl_feedback
 from django.forms.widgets import PasswordInput, TextInput, EmailInput
 
 from phonenumber_field.formfields import PhoneNumberField
@@ -39,5 +39,5 @@ class PasswordChangeForm(PasswordChangeForm):
 
 class ContactForm(forms.ModelForm):
   class Meta:
-    model = tbl_contact
+    model = tbl_feedback
     field = ['subject','description']

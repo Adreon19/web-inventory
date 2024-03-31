@@ -10,12 +10,12 @@ from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 
 def index(request):
-    return render(request, "core/index.html")
+    return render(request, "pages/index.html")
 
 @csrf_protect
 @login_required
 def home(request):
-    return render(request,"users/home.html")
+    return render(request,"pages/home.html")
 
 def register(request):
     if request.method == "POST": 
@@ -76,7 +76,7 @@ def profile(request):
     else:
         userprof = UpdateUserProfile(instance=request.user)
         
-    return render(request,"users/profile.html",{"editform":userprof})
+    return render(request,"pages/profile.html",{"editform":userprof})
 
 @login_required
 def category(request):
@@ -84,21 +84,21 @@ def category(request):
         rooms = request.POST.get("room")
         condition = request.POST.get("condition")
         display= tbl_item.objects.filter(room=rooms,condition=condition)
-        return render(request,"users/category.html",{"Items":display})
+        return render(request,"pages/category.html",{"Items":display})
     else:
         search = tbl_item.objects.filter()
-        return render(request,"users/category.html",{"Items":search})
+        return render(request,"pages/category.html",{"Items":search})
 
 @login_required
-def order(request):
-    return render(request, "users/order.html", {"borrow":tbl_lend.objects.all()})
+def lending(request):
+    return render(request, "pages/lending.html", {"borrow":tbl_lend.objects.all()})
 
 @login_required
 def history(request):
     context = {
         "peminjaman":tbl_lend.objects.all()
     }
-    return render(request, "users/history.html",context)
+    return render(request, "pages/history.html",context)
 
 def item_detail(request,pk):
     item = tbl_item.objects.get(pk=pk)
@@ -119,8 +119,8 @@ def item_detail(request,pk):
             order.save()
             item.quantity -= quantity
             item.save()
-            return redirect('src:history')
+            return redirect('src:lending')
         else:
             error_message = "Insufficient quantity available"
-            return render(request, 'core/item_detail.html', {'item': item, 'error_message': error_message})
-    return render(request, 'core/item_detail.html', {'item': item})
+            return render(request, 'page_details/item_detail.html', {'item': item, 'error_message': error_message})
+    return render(request, 'page_details/item_detail.html', {'item': item})

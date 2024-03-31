@@ -108,7 +108,7 @@ class tbl_lend(models.Model):
   return_time = models.DateTimeField(null=True, blank=True, editable=False)
   status = models.CharField(max_length=50,choices=STATUS_CHOICES,null=True)
 
-class tbl_contact(models.Model):
+class tbl_feedback(models.Model):
   subject = models.CharField(max_length=255, null=True)
   description = models.TextField(null=True)
   date = models.DateTimeField(default=datetime.datetime.now, editable=False)
