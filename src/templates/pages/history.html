@@ -17,7 +17,7 @@
     </tr>
     {% for lending in peminjaman%}
       {% if lending.client == user%}
-        {% if lending.status == "Ditolak" or lending.status == "Dikembalikan" %}
+        {% if lending.status == "Dikembalikan" %}
         <tr>
           <td>{{lending.item}}</td>
           <td>{{lending.condition}}</td>

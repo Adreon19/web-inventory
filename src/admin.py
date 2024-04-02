@@ -10,7 +10,7 @@ admin.site.site_title = "Inventory"
 admin.site.index_title = "Dashboard"
 
 class ItemConfigAdmin(admin.ModelAdmin):
-    list_display = ("name","category","condition","quantity","room")
+    list_display = ("image","name","category","condition","quantity","room")
     list_filter = ["category","room","condition"]
     
 class LendingConfigAdmin(admin.ModelAdmin):

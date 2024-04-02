@@ -33,7 +33,7 @@ def signin(request):
     if request.method == 'POST':
         forms = LoginForm(data=request.POST)
         if forms.is_valid():
-            """
+            
             user = forms.get_user()
             login(request, user)
             return redirect('src:home')  # Redirect to dashboard after login
@@ -44,6 +44,7 @@ def signin(request):
             if user is not None:
                 login(request, user)
                 return redirect('src:home') 
+            """
     else:
         forms = LoginForm()
         
@@ -53,7 +54,8 @@ def logouts(request):
     if request.method == 'POST':
         logout(request)
         return redirect("src:login")
-    
+
+@login_required
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(user=request.user,data=request.POST)
@@ -64,6 +66,7 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user)
     return render(request,"registration/password_change.html",{"form":form})
 
+@login_required
 def reset_password(request):
     return render(request, "registration/password_reset_form.html")
 
@@ -82,13 +85,26 @@ def profile(request):
 @login_required
 def category(request):
     if (request.method == "POST"):
-        rooms = request.POST.get("room")
-        condition = request.POST.get("condition")
-        display= tbl_item.objects.filter(room=rooms,condition=condition)
-        return render(request,"pages/category.html",{"Items":display})
-    else:
-        search = tbl_item.objects.filter()
-        return render(request,"pages/category.html",{"Items":search})
+        quantity = int(request.POST['quantity'])
+        user = request.POST['username']
+        condition = request.POST['condition']
+        room = request.POST['room']
+        id = request.POST['id']
+        item = get_object_or_404(tbl_item, id=id)
+        loan = tbl_loan(
+                item_code=id,
+                item=item, 
+                client=get_object_or_404(tbl_account, username=user),
+                lending_quantity=quantity, 
+                condition=condition,
+                room=room,
+                status="Diproses"
+            )
+        loan.save()
+        item.quantity -= quantity
+        item.save()
+        return redirect('src:lending')
+    return render(request,"pages/category.html",{"Items":tbl_item.objects.all()})
 
 @login_required
 def lending(request):

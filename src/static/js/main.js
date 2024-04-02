@@ -24,3 +24,16 @@ function RegisterPass() {
     a = 1;
   }
 }
+
+const numberInput = document.getElementById('numberInput');
+const incrementBtn = document.getElementById('incrementBtn');
+const decrementBtn = document.getElementById('decrementBtn');
+
+  // Add click event listeners to the buttons
+incrementBtn.addEventListener('click', () => {
+  numberInput.stepUp();
+});
+
+decrementBtn.addEventListener('click', () => {
+  numberInput.stepDown();
+});
