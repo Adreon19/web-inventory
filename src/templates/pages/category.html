@@ -24,9 +24,8 @@
                         <input type="number" name="quantity" id="numberInput" value="1" min="1" max="{{ product.quantity}}">
                         <div class="btn" id="incrementBtn">&#9650;</div>
                     </div>
-                    <input class="order" type="submit" value="pinjam">
+                    <input class="order" type="submit" value="Pinjam">
                 </form>
-                <button class="order" onclick="window.location.href='{% url 'src:item-detail' pk=product.id %}'">Pinjam</button>
             </div>
         {% endfor %}
     </div>

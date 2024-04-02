@@ -13,7 +13,6 @@ urlpatterns = [
         path("accounts/password_reset/",views.reset_password,name="password_reset"),
         path("user/home/",views.home, name="home"),
         path("user/category/",views.category,name="category"),
-        path("user/category/<uuid:pk>",views.item_detail,name="item-detail"),
         path("user/profile/",views.profile, name="profile"),
         path("user/lending/",views.lending,name="lending"),
         path("user/history/",views.history,name="history")

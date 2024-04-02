@@ -129,31 +129,3 @@ def history(request):
         "peminjaman":tbl_loan.objects.all()
     }
     return render(request, "pages/history.html",context)
-
-@login_required
-def item_detail(request,pk):
-    item = tbl_item.objects.get(pk=pk)
-    if request.method == 'POST':
-        quantity = int(request.POST['quantity'])
-        user = request.POST['username']
-        condition = request.POST['condition']
-        room = request.POST['room']
-        code= request.POST['code']
-        if quantity <= item.quantity: 
-            order = tbl_loan(
-                item_code=code,
-                item=item, 
-                client=get_object_or_404(tbl_account, username=user),
-                lending_quantity=quantity, 
-                condition=condition,
-                room=room,
-                status="Diproses"
-            )
-            order.save()
-            item.quantity -= quantity
-            item.save()
-            return redirect('src:lending')
-        else:
-            error_message = "Insufficient quantity available"
-            return render(request, 'page_details/item_detail.html', {'item': item, 'error_message': error_message})
-    return render(request, 'page_details/item_detail.html', {'item': item})
