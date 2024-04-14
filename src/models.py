@@ -24,6 +24,8 @@ CONDITION = (
 
 STATUS_CHOICES = (
   ('Diterima', 'Diterima'),
+  ('Diproses', 'Diproses'),
+  ('Dikembalikan', 'Dikembalikan')
 )
 
 class UserManager(BaseUserManager):

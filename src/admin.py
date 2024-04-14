@@ -10,12 +10,12 @@ admin.site.site_title = "Inventory"
 admin.site.index_title = "Dashboard"
 
 class ItemConfigAdmin(admin.ModelAdmin):
-    list_display = ("image","name","category","condition","quantity","room")
+    list_display = ("name","category","condition","quantity","room", "image")
     list_filter = ["category","room","condition"]
     
 class LendingConfigAdmin(admin.ModelAdmin):
     list_display = ("client","item","condition","room","lending_quantity","date_lending","return_time","status")
-    list_filter = ['item',"room"]
+    list_filter = ["status"]
 
 class CustomUserAdmin(UserAdmin):
     model = tbl_account
