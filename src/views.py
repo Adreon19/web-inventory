@@ -86,7 +86,7 @@ def profile(request):
 def category(request):
     if (request.method == "POST"):
         quantity = int(request.POST['quantity'])
-        user = request.POST['username']
+        user = request.user.get_username()
         condition = request.POST['condition']
         room = request.POST['room']
         id = request.POST['id']
@@ -129,3 +129,16 @@ def history(request):
         "peminjaman":tbl_loan.objects.all()
     }
     return render(request, "pages/history.html",context)
+
+"""
+@login_required
+def category(request):
+    if (request.method == "POST"):
+        rooms = request.POST.get("room")
+        condition = request.POST.get("condition")
+        display= tbl_barang.objects.filter(room=rooms,condition=condition)
+        return render(request,"users/category.html",{"Items":display})
+    else:
+        search = tbl_barang.objects.filter()
+        return render(request,"users/category.html",{"Items":search})
+"""

@@ -10,8 +10,10 @@ admin.site.site_title = "Inventory"
 admin.site.index_title = "Dashboard"
 
 class ItemConfigAdmin(admin.ModelAdmin):
-    list_display = ("name","category","condition","quantity","room", "image")
+    list_display = ("item","name","category","condition","quantity","room")
     list_filter = ["category","room","condition"]
+
+    readonly_fields = ('item',)
     
 class LendingConfigAdmin(admin.ModelAdmin):
     list_display = ("client","item","condition","room","lending_quantity","date_lending","return_time","status")

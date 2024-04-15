@@ -1,6 +1,7 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.utils.safestring import mark_safe
 import datetime, uuid
 
 # Create your models here.
@@ -93,6 +94,10 @@ class tbl_item(models.Model):
   quantity = models.PositiveIntegerField(null=True)
   room = models.CharField(max_length=100, choices=ROOMS, null=True)
   image = models.ImageField(null=True,blank=True)
+
+  def item(self):
+     return mark_safe("<img src='{}' width='100px'>".format(self.image.url))
+  
   
   def __str__(self):
     return f"{self.name}"

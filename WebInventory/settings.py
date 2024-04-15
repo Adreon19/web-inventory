@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ftqrw+sne7md$t$7u!a%qf5)jmg*mw2!l^kc^_bf1ip^#__vv('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -129,7 +129,7 @@ STATICFILES_DIR = [
     os.path.join(BASE_DIR,"static/")
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR,"staticfiles/product/")
+MEDIA_ROOT = os.path.join(BASE_DIR,"static/img/")
 MEDIA_URL = "product/"
 
 # Default primary key field type

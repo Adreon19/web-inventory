@@ -15,7 +15,6 @@
                 <p>Room: {{ product.room}} </p>
                 <form method="POST" action="{% url 'src:category'%}">
                     {% csrf_token %}
-                    <input class="manipulate" type="text" name="username" value="{{ user.get_username }}" readonly>
                     <input class="manipulate" type="text" name="condition" value="{{ product.condition }}" readonly>
                     <input class="manipulate" type="text" name="id" value="{{ product.id }}" readonly>
                     <input class="manipulate" type="text" name="room" value="{{ product.room }}" readonly>
