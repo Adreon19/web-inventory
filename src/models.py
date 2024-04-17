@@ -10,17 +10,11 @@ ITEMS = (
   ("Electronics","Electronics"),
   ("Cables","Cables"),
   ("Accessories","Accessories"),
-  ("Other","Other")
 )
 
 ROOMS = (
   ("IT", "IT"),
   ("DKV","DKV")
-)
-
-CONDITION = (
-  ("Normal","Normal"),
-  ("Broken","Broken")
 )
 
 STATUS_CHOICES = (
@@ -90,13 +84,12 @@ class tbl_item(models.Model):
   id = models.CharField(primary_key=True,default=uuid.uuid4,editable=False, max_length=36)
   name = models.CharField(max_length=100, null=True)
   category = models.CharField(max_length=100, choices=ITEMS, null=True)
-  condition = models.CharField(max_length=100, choices=CONDITION, null=True)
   quantity = models.PositiveIntegerField(null=True)
   room = models.CharField(max_length=100, choices=ROOMS, null=True)
   image = models.ImageField(null=True,blank=True)
 
   def item(self):
-     return mark_safe("<img src='{}' width='100px'>".format(self.image.url))
+     return mark_safe("<img src='{}' width='100px' height='100px'>".format(self.image.url))
   
   
   def __str__(self):
@@ -104,17 +97,18 @@ class tbl_item(models.Model):
   
 class tbl_loan(models.Model):
   id = models.CharField(primary_key=True,default=uuid.uuid4,editable=False, max_length=36)
+  item_code = models.CharField(editable=False, max_length=36)
   client = models.ForeignKey(tbl_account,on_delete=models.CASCADE,max_length=255,editable=False)
   item = models.ForeignKey(tbl_item, on_delete=models.CASCADE, null=True, editable=False)
-  item_code = models.CharField(editable=False, max_length=36)
-  condition = models.CharField(max_length=100,choices=CONDITION,null=True, editable=False)
   room = models.CharField(max_length=100,choices=ROOMS,null=True, editable=False)
+  category = models.CharField(max_length=100,choices=ITEMS,null=True, editable=False)
   lending_quantity = models.PositiveIntegerField(null=True, editable=False)
+  description = models.TextField(null=True)
   date_lending = models.DateTimeField(default=datetime.datetime.now,editable=False)
   return_time = models.DateTimeField(null=True, blank=True, editable=False)
   status = models.CharField(max_length=50,choices=STATUS_CHOICES,null=True)
 
 class tbl_feedback(models.Model):
-  subject = models.CharField(max_length=255, null=True)
-  description = models.TextField(null=True)
+  subject = models.CharField(max_length=255, null=True, editable=False)
+  description = models.TextField(null=True, editable=False)
   date = models.DateTimeField(default=datetime.datetime.now, editable=False)

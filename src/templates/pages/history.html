@@ -8,7 +8,7 @@
   <table>
     <tr>
       <th>Nama barang</th>
-      <th>Kondisi</th>
+      <th>Kategori</th>
       <th>Ruangan</th>
       <th>Jumlah pinjam</th>
       <th>Waktu peminjaman</th>
@@ -20,7 +20,7 @@
         {% if lending.status == "Dikembalikan" %}
         <tr>
           <td>{{lending.item}}</td>
-          <td>{{lending.condition}}</td>
+          <td>{{lending.category}}</td>
           <td>{{lending.room}}</td>
           <td>{{lending.lending_quantity}}</td>
           <td>{{lending.date_lending}}</td>

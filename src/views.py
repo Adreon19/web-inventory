@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login,logout, authenticate
+from django.contrib.auth import login,logout
 from django.contrib.auth.forms import PasswordChangeForm
 import datetime
 from .forms import *
@@ -83,28 +83,42 @@ def profile(request):
     return render(request,"pages/profile.html",{"editform":userprof})
 
 @login_required
-def category(request):
+def category_detail(request, item_id):
+    product = tbl_item.objects.get(id=item_id)
     if (request.method == "POST"):
-        quantity = int(request.POST['quantity'])
         user = request.user.get_username()
-        condition = request.POST['condition']
-        room = request.POST['room']
-        id = request.POST['id']
+        room = product.room
+        id = product.id
+        categories = product.category
         item = get_object_or_404(tbl_item, id=id)
+        quantity = int(request.POST['quantity'])
+        desc = request.POST['description']
         loan = tbl_loan(
                 item_code=id,
                 item=item, 
                 client=get_object_or_404(tbl_account, username=user),
                 lending_quantity=quantity, 
-                condition=condition,
+                category=categories,
                 room=room,
+                description=desc,
                 status="Diproses"
             )
         loan.save()
         item.quantity -= quantity
         item.save()
         return redirect('src:lending')
-    return render(request,"pages/category.html",{"Items":tbl_item.objects.all()})
+    return render(request,"pages/category_detail.html",{"product":product})
+
+@login_required
+def category(request):
+    if (request.method == "POST"):
+        rooms = request.POST.get("room")
+        categories=request.POST.get("category")
+        display= tbl_item.objects.filter(room=rooms, category=categories)
+        return render(request,"pages/category.html",{"Items":display})
+    else:
+        search = tbl_item.objects.filter()
+        return render(request,"pages/category.html",{"Items":search})
 
 @login_required
 def lending(request):
@@ -129,16 +143,3 @@ def history(request):
         "peminjaman":tbl_loan.objects.all()
     }
     return render(request, "pages/history.html",context)
-
-"""
-@login_required
-def category(request):
-    if (request.method == "POST"):
-        rooms = request.POST.get("room")
-        condition = request.POST.get("condition")
-        display= tbl_barang.objects.filter(room=rooms,condition=condition)
-        return render(request,"users/category.html",{"Items":display})
-    else:
-        search = tbl_barang.objects.filter()
-        return render(request,"users/category.html",{"Items":search})
-"""

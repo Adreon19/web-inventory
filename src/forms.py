@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
-from .models import tbl_account, tbl_feedback
+from .models import *
 from django.forms.widgets import PasswordInput, TextInput, EmailInput
 
 from phonenumber_field.formfields import PhoneNumberField
