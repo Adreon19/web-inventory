@@ -149,3 +149,14 @@ JAZZMIN_SETTINGS = {
 }
 
 AUTH_USER_MODEL = 'src.tbl_account'
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.example.com'
+    EMAIL_PORT = 587  
+    EMAIL_USE_TLS = True  
+    EMAIL_HOST_USER = 'your_email@example.com'
+    EMAIL_HOST_PASSWORD = 'your_password' 

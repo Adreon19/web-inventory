@@ -6,14 +6,11 @@ import datetime
 from .forms import *
 from .models import *
 
-from django.views.decorators.csrf import csrf_protect
-
 # Create your views here.
 
 def index(request):
     return render(request, "pages/index.html")
 
-@csrf_protect
 @login_required
 def home(request):
     return render(request,"pages/home.html")
@@ -66,9 +63,17 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user)
     return render(request,"registration/password_change.html",{"form":form})
 
-@login_required
 def reset_password(request):
     return render(request, "registration/password_reset_form.html")
+
+def reset_password_confirm(request):
+    return render(request, "registration/password_reset_confirm.html")
+
+def reset_password_complete(request):
+    return render(request, "registration/password_reset_complete.html")
+
+def reset_password_done(request):
+    return render(request,"registration/password_reset_done.html")
 
 @login_required
 def profile(request):
