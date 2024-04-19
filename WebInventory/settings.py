@@ -79,13 +79,25 @@ WSGI_APPLICATION = 'WebInventory.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
 
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'db_name',                      
+            'USER': 'db_user',
+            'PASSWORD': 'db_pass',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -160,3 +172,8 @@ else:
     EMAIL_USE_TLS = True  
     EMAIL_HOST_USER = 'your_email@example.com'
     EMAIL_HOST_PASSWORD = 'your_password' 
+
+# Telegram notify setting
+
+TELEGRAM_TOKEN = "[BOT_TOKEN]"
+CHAT_ID = "[CHAT_ID]"

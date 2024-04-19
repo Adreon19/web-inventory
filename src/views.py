@@ -2,9 +2,23 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout
 from django.contrib.auth.forms import PasswordChangeForm
-import datetime
+import datetime, requests
 from .forms import *
 from .models import *
+
+from WebInventory.settings import TELEGRAM_TOKEN, CHAT_ID
+
+def telegram_notify(message):
+    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    params = {
+        "chat_id": CHAT_ID,
+        "text": message
+    }
+    response = requests.post(url, params=params)
+    if response.status_code == 200:
+        print("receiving new lend")
+    else:
+        print("Failed to send message. Error:", response.status_code)
 
 # Create your views here.
 
@@ -33,15 +47,7 @@ def signin(request):
             
             user = forms.get_user()
             login(request, user)
-            return redirect('src:home')  # Redirect to dashboard after login
-            """
-            username = forms.cleaned_data['username']
-            password = forms.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('src:home') 
-            """
+            return redirect('src:home') 
     else:
         forms = LoginForm()
         
@@ -73,7 +79,7 @@ def reset_password_complete(request):
     return render(request, "registration/password_reset_complete.html")
 
 def reset_password_done(request):
-    return render(request,"registration/password_reset_done.html")
+    return render(request, "registration/password_reset_done.html")
 
 @login_required
 def profile(request):
@@ -107,6 +113,15 @@ def category_detail(request, item_id):
                 room=room,
                 description=desc,
                 status="Diproses"
+            )
+        telegram_notify(
+f"""
+NAMA PEMINJAM                   : {user}
+BARANG YANG INGIN DIPINJAM      : {product.name}
+LOKASI/RUANGAN BARANG           : {room}
+JUMLAH BARANG YANG DIPINJAM     : {quantity}
+KATEGORI                        : {categories}
+"""
             )
         loan.save()
         item.quantity -= quantity
