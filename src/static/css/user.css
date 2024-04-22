@@ -105,6 +105,42 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+.manipulate {
+  display: none;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+.input-container .btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: 5px;
+  outline: none;
+  user-select: none; /* Prevent text selection */
+}
+
+.input-container .btn:hover {
+  background-color: #e0e0e0;
+}
+
+.input-container input[type="number"] {
+  flex: 1;
+  padding: 5px;
+  text-align: center;
+  /* Remove default spinner arrows */
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.input-container input::-webkit-inner-spin-button,
+.input-container input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 @media screen and (max-width: 700px) {
   .sidenav {
     width: 100%;

@@ -1,5 +1,5 @@
-{% extends "layout/base.html"%}
-{% block title %} Server Error{% endblock %}
-{% block contents %} 
-<h1>500 server error</h1>
-{% endblock contents%}
+{%extends 'layout/statuscode.html'%}
+{% load static %}
+{%block title%} Server error {%endblock%}
+{% block heading %} 500 {% endblock %}
+{% block desc %} The server encountered an internal error or misconfiguration and was unable to complete your request {% endblock %}

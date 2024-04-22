@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'WebInventory.urls'
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -77,13 +79,25 @@ WSGI_APPLICATION = 'WebInventory.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
 
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'db_name',                      
+            'USER': 'db_user',
+            'PASSWORD': 'db_pass',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -120,13 +134,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles/'
+
+
 STATICFILES_DIR = [
-    os.path.join(BASE_DIR,"static")
+    os.path.join(BASE_DIR,"static/")
 ]
 
-MEDIA_URL = "img/"
-
-MEDIA_ROOT = os.path.join(BASE_DIR,"static/img")
+MEDIA_ROOT = os.path.join(BASE_DIR,"static/img/")
+MEDIA_URL = "product/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -143,3 +159,21 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Administrator Panel",
     "copyright": ""
 }
+
+AUTH_USER_MODEL = 'src.tbl_account'
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.example.com'
+    EMAIL_PORT = 587  
+    EMAIL_USE_TLS = True  
+    EMAIL_HOST_USER = 'your_email@example.com'
+    EMAIL_HOST_PASSWORD = 'your_password' 
+
+# Telegram notify setting
+
+TELEGRAM_TOKEN = "[BOT_TOKEN]"
+CHAT_ID = "[CHAT_ID]"

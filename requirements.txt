@@ -2,5 +2,7 @@ django
 django-jazzmin
 Pillow
 phonenumbers
+psycopg2
 django-phonenumber-field
+whitenoise
 git+https://github.com/dmpayton/django-admin-honeypot.git#egg=django-admin-honeypot

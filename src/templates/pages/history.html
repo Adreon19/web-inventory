@@ -5,28 +5,29 @@
 {% block navbar %} {% include "components/usernav.html"%} {% endblock navbar%}
 {% block contents %}
 <main>
-  <h1>Riwayat peminjaman</h1>
   <table>
     <tr>
       <th>Nama barang</th>
-      <th>Kondisi</th>
-      <th>Ruangan<th>
+      <th>Kategori</th>
+      <th>Ruangan</th>
       <th>Jumlah pinjam</th>
       <th>Waktu peminjaman</th>
       <th>Waktu kembali</th>
       <th>Status</th>
     </tr>
     {% for lending in peminjaman%}
-      {% if user.get_username %}
+      {% if lending.client == user%}
+        {% if lending.status == "Dikembalikan" %}
         <tr>
           <td>{{lending.item}}</td>
-          <td>{{lending.condition}}</td>
+          <td>{{lending.category}}</td>
           <td>{{lending.room}}</td>
           <td>{{lending.lending_quantity}}</td>
           <td>{{lending.date_lending}}</td>
-          <td>{{lending.return_date}}</td>
+          <td>{{lending.return_time}}</td>
           <td>{{lending.status}}</td>
         </tr>
+        {% endif %}
       {% endif %}
     {%endfor%}
   </table>

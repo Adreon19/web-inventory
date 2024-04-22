@@ -1,6 +1,6 @@
 # Web Inventory
 
-ini adalah projekan dari sekolah, gunanya ya buat minjem barang elektronik sih..
+Aplikasi peminjaman barang online
 
 ## How to use it
 
@@ -13,8 +13,14 @@ pip install -r requirements.txt
 migrate
 
 ```
-python manage.py makemigrations
-python manage.py migrate
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+
+collect static
+
+```
+python3 manage.py collectstatic
 ```
 
 create admin account
@@ -26,5 +32,5 @@ python manage.py createsuperuser
 running
 
 ```
-python manage.py runserver
+python3 manage.py runserver
 ```

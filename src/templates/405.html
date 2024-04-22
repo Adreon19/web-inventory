@@ -1,3 +1,5 @@
-{% extends "layout/base.html" %}
-{% block title %} Not allowed {% endblock %}
-{% block contents %} <h1>405 Method not allowed!!</h1> {% endblock contents%}
+{%extends 'layout/statuscode.html'%}
+{% load static %}
+{%block title%} Not allowed {%endblock%}
+{% block heading %} 405 {% endblock %}
+{% block desc %} The method specified in the request is not allowed for the resource. {% endblock %}

@@ -1,5 +1,5 @@
-{% extends "layout/base.html"%}
-{% block title %} Forbidden {% endblock %}
-{% block contents %} 
-<h1>403 forbidden</h1>
-{% endblock contents%}
+{% extends 'layout/statuscode.html'%}
+{% load static %}
+{% block title %} Forbidden {%endblock%}
+{% block heading %} 403 {% endblock %}
+{% block desc %} Get out boy, you're are not allow to see this page!{% endblock %}

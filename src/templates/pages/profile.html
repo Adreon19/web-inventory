@@ -13,14 +13,16 @@
   <hr />
   <form method="POST" enctype="multipart/form-data" class="prof-info">
     {%csrf_token%}
+    <label for="username">Change Username</label>
+    {{ editform.username }}<br>
     <label for="firstname">Firstname</label><br>
     {{ editform.first_name }}<br>
     <label for="lastname">Lastname</label><br>
     {{ editform.last_name }} <br>
-    <label for="username">Change Username</label>
-    {{ editform.username }}<br>
     <label for="email">Change Email</label><br>
     {{ editform.email }} <br>
+    <label for="phonenumber">Phonenumber</label>
+    {{ editform.phonenumber }}<br>
     <input type="submit" value="Update" />
   </form>
   <h3>Password</h3>

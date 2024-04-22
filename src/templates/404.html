@@ -1,11 +1,5 @@
-{%extends 'layout/base.html'%}
+{%extends 'layout/statuscode.html'%}
 {% load static %}
 {%block title%} Not Found {%endblock%}
-{%block css %} <link rel="stylesheet" href="{% static 'css/404.css' %}" /> {%endblock%}
-{%block contents%}
-<div class="container">
-  <h1>404</h1>
-  <p>Wah, halamannya gak ketemu nih.</p>
-  <a href="/">Kembali ke beranda</a>
-</div>
-{%endblock contents%}
+{% block heading %} 404 {% endblock %}
+{% block desc %} You are open the wrong site!{% endblock %}

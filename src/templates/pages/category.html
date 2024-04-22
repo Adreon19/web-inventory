@@ -5,7 +5,6 @@
 {% block navbar %} {% include 'components/usernav.html' %} {% endblock navbar%}
 {% block contents %}
 <main> 
-    <h1 style="text-align: center;">Barang yang tersedia</h1>
     <form method="POST" class="dropdown">
         {% csrf_token %}
         <select name="room">
@@ -13,22 +12,23 @@
             <option>IT</option>
             <option>DKV</option>
         </select>
-        <select name="condition">
-            <option selected disabled=true>Select Condition</option>
-            <option>Normal</option>
-            <option>Broken</option>
+        <select name="category">
+            <option selected disabled=true>Select Category</option>
+            <option>Electronics</option>
+            <option>Cables</option>
+            <option>Accessories</option>
         </select>
         <input type="submit" value="Search">
     </form>
     <div class="product-row">
         {% for product in Items %}
             <div class="product-column">
-                <img src="{{ product.image.url }}" style="width: 100%">
+                <img src="{{ product.image.url }}" style="height: 200px; width: 200px">
                 <h1 class="product-name">{{ product.name }} </h1>
                 <p>Quantity: {{ product.quantity }} </p>
-                <p>Condition: {{ product.condition}} </p>
                 <p>Room: {{ product.room}} </p>
-                <button class="order">Pinjam</button>
+                <p>Categories: {{ product.category }}</p>
+                <button class="order" onclick="window.location.href='{% url 'src:category-detail' item_id=product.id %}'">Pinjam</button>
             </div>
         {% endfor %}
     </div>
